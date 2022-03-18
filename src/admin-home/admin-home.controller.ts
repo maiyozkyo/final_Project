@@ -17,6 +17,10 @@ export class AdminHomeController {
 
   }
 
+  @Get('/manages')
+  @Render('./Admin/manage-users')
+  manageAccount(){}
+
   @Get('/addProduct')
   @Render('./Admin/add-product')
   addProduct(){

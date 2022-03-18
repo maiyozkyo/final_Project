@@ -11,6 +11,10 @@ export class AppController {
     
   }
 
+  @Get('/cart')
+  @Render('./User/cart')
+  Cart(){}
+
   @Post('/admin')
   @Render('./User/home')
   test(){

@@ -75,6 +75,10 @@ a:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+.btn:hover{
+  color: #f2b01e;
+  background-color: #000000;
+}
 
 /*header section*/
 .hero_area {
@@ -213,7 +217,12 @@ a:focus {
 }
 
 .custom_nav-container {
-  padding: 0;
+  background-color: #000000;
+}
+
+.custom_nav-container .nav-item{
+  color: #ffffff;
+
 }
 
 .custom_nav-container .navbar-nav {
