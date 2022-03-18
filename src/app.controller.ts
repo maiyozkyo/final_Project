@@ -11,6 +11,7 @@ export class AppController {
     
   }
 
+
   @Get('/cart')
   @Render('./User/cart')
   Cart(){}
@@ -19,5 +20,24 @@ export class AppController {
   @Render('./User/home')
   test(){
 
+
+  @Get('/product')
+  @Render('./User/product')
+  productRouter(@Request() req: Request){
+    console.log(req);
+    
   }
+
+  @Get('/about')
+  @Render('./User/about')
+  aboutRouter(@Request() req: Request){
+    console.log(req);
+    
+  }
+
+  @Get('/why')
+  @Render('./User/why')
+  whyRouter(@Request() req: Request){
+    console.log(req);
+    
 }
