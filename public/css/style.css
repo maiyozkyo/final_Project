@@ -79,6 +79,9 @@ a:focus {
   color: #f2b01e;
   background-color: #000000;
 }
+.light{
+  color: #ffffff;
+}
 
 /*header section*/
 .hero_area {
