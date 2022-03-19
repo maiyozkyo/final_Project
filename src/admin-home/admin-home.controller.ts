@@ -23,6 +23,12 @@ export class AdminHomeController {
 
   }
 
+  @Get('/manages/user-detail')
+  @Render('./Admin/user-detail')
+  viewAccount(){
+
+  }
+
   @Post()
   @Redirect('./Admin/home')
   @Render('./Admin/home')
