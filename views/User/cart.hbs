@@ -12,17 +12,17 @@
                 <div class="row container-fluid custom_nav-container px-3 py-3">
                     <ul class="list-group" style="width: 100%;">
                         <li class="list-group-item">
-                            <div class="row">
+                            <div class="row d-flex align-items-center">
                                 <div class="col-1">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                                     </div>
                                 </div>
                                 <div class="col-2">
-                                    <img src="../../public/img/p1.png" height="auto" />
+                                    <img src="img/p1.png" height="64px" />
                                 </div>
                                 <div class="col-4">
-                                    <a href="">Description</a>
+                                    <a class="description" href="product">Description</a>
                                 </div>
                                 <div class="col-3">
                                     <div style="display: inline-flex;">
@@ -45,13 +45,13 @@
                     <div class="row nav-item">
                         <div class="w-100 px-3">
                             <p class="float-left">Tạm tính</p>
-                            <p class="float-right" style="color: orange;">price</p>
+                            <p class="float-right" style="color:#f2b01e;">price</p>
                         </div>
                     </div>
                     <div class="row nav-item">
                         <div class="px-3 w-100">
                             <p class="float-left">Thành tiền</p>
-                            <p class="float-right" style="color: orange;">price</p>
+                            <p class="float-right" style="color: #f2b01e;">price</p>
                         </div>
                     </div>
                     <div class="btn light" style="font-size: x-large;">Thanh toán</div>
@@ -59,4 +59,7 @@
             </div>
         </div>
     </body>
+
+    {{> footer}}
+
 </html>

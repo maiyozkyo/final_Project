@@ -5,6 +5,14 @@ body {
   overflow-x: hidden;
 }
 
+.description{
+  font-size: small;
+  color: #000000;
+}
+.description:hover{
+  color: #f2b01e;
+}
+
 .layout_padding {
   padding: 90px 0;
 }
@@ -146,11 +154,11 @@ a:focus {
 }
 
 .contact_nav a i {
-  color: orange;
+  color:#f2b01e;
 }
 
 .contact_nav a:hover {
-  color: orange;
+  color:#f2b01e;
 }
 
 .search_form {
@@ -175,7 +183,7 @@ a:focus {
   border: none;
   outline: none;
   color: #ffffff;
-  background-color: orange;
+  background-color:#f2b01e;
   border-radius: 0 5px 5px 0;
 }
 
