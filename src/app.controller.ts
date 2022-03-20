@@ -10,29 +10,5 @@ export class AppController {
   root(@Request() req: Request){
     
   }
-
-
-  @Get('/cart')
-  @Render('./User/cart')
-  Cart(){}
-
-  @Get('/about')
-  @Render('./User/about')
-  aboutRouter(@Request() req: Request){
-    console.log(req);
-    
-  }
-
-  @Get('/why')
-  @Render('./User/why')
-  whyRouter(@Request() req: Request){
-    console.log(req);
-  }
-
-  @Get('/product/detail')
-  @Render('./User/productDetail')
-  detailRouter(@Request() req: Request){
-    console.log(req);
-  }
 }
 
