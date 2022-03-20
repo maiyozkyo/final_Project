@@ -35,4 +35,11 @@ export class AppController {
   whyRouter(@Request() req: Request){
     console.log(req);
   }
+
+  @Get('/product/detail')
+  @Render('./User/detail')
+  detailRouter(@Request() req: Request){
+    console.log(req);
+  }
 }
+
