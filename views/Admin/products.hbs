@@ -279,9 +279,10 @@
     {{> footerAdmin}}
     {{> scriptAdmin}}
     <script>
+      $('.fa-shopping-cart').parent().addClass('active');
       $(function() {
         $(".tm-product-name").on("click", function() {
-          window.location.href = "edit-product.html";
+          window.location.href = "/admin/products/edit";
         });
       });
     </script>
