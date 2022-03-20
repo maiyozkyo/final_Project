@@ -7,6 +7,7 @@ import { AdminLoginModule } from './admin-login/admin-login.module';
 import { AdminManagementModule } from './admin-management/admin-management.module';
 import { AdminUserDetailModule } from './admin-user-detail/admin-user-detail.module';
 import { UserProductModule } from './user-product/user-product.module';
+import { AdminOrderListModule } from './admin-order-list/admin-order-list.module';
 
 
 @Module({
@@ -15,6 +16,7 @@ import { UserProductModule } from './user-product/user-product.module';
     AdminProductModule,
     AdminLoginModule,
     UserProductModule,
+    AdminOrderListModule,
     
   ],
   controllers: [AppController],

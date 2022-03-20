@@ -12,7 +12,7 @@ export class UserProductController {
   }
 
   @Get('/detail')
-  @Render('./User/detail')
+  @Render('./User/productDetail')
   detailRouter(@Request() req: Request){
     console.log(req);
   }
