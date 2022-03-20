@@ -6,10 +6,23 @@ import { AdminProductModule } from './admin-product/admin-product.module';
 import { AdminLoginModule } from './admin-login/admin-login.module';
 import { AdminManagementModule } from './admin-management/admin-management.module';
 import { AdminUserDetailModule } from './admin-user-detail/admin-user-detail.module';
+import { UserProductModule } from './user-product/user-product.module';
+import { AdminOrderListModule } from './admin-order-list/admin-order-list.module';
+
 
 @Module({
-  imports: [AdminHomeModule, AdminProductModule, AdminLoginModule, AdminManagementModule, AdminUserDetailModule],
+  imports: [
+    AdminHomeModule,
+    AdminProductModule,
+    AdminLoginModule,
+    UserProductModule,
+    AdminOrderListModule,
+    
+  ],
   controllers: [AppController],
   providers: [AppService],
+
 })
-export class AppModule {}
+export class AppModule {
+  
+}

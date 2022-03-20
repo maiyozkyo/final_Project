@@ -13,7 +13,7 @@ https://templatemo.com/tm-524-product-admin
 
 html {
   font-size: 16px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 body {
@@ -54,6 +54,9 @@ button:focus {
   height: 100px;
   background-color: var(--primary1);
   padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .navbar .container {
   position: relative;
@@ -664,6 +667,20 @@ input[type="checkbox"]:focus {
 .tm-footer-link:hover,
 .tm-footer-link:focus {
   color: #aacbea;
+}
+
+#back-to-top, #back-to-top:hover {
+  display: none;
+  color: rgb(33, 111, 145);
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 1;
+  outline: none;
+  border: none;
+  background: none;
 }
 
 @media (min-width: 1200px) {

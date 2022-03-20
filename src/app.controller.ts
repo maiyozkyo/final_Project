@@ -16,13 +16,6 @@ export class AppController {
   @Render('./User/cart')
   Cart(){}
 
-  @Get('/product')
-  @Render('./User/product')
-  productRouter(@Request() req: Request){
-    console.log(req);
-    
-  }
-
   @Get('/about')
   @Render('./User/about')
   aboutRouter(@Request() req: Request){
@@ -36,10 +29,14 @@ export class AppController {
     console.log(req);
   }
 
+<<<<<<< HEAD
   @Get('/product/detail')
   @Render('./User/productDetail')
   detailRouter(@Request() req: Request){
     console.log(req);
   }
+=======
+  
+>>>>>>> 2f25ea6c26c9935b9ab7787356a1386fc6b345b4
 }
 
