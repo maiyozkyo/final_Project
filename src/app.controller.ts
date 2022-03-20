@@ -37,7 +37,7 @@ export class AppController {
   }
 
   @Get('/product/detail')
-  @Render('./User/detail')
+  @Render('./User/productDetail')
   detailRouter(@Request() req: Request){
     console.log(req);
   }
