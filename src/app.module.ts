@@ -13,6 +13,7 @@ import { UserProductDetailModule } from './user-product-detail/user-product-deta
 import { UserAboutModule } from './user-about/user-about.module';
 import { UserWhyModule } from './user-why/user-why.module';
 import { UserCartModule } from './user-cart/user-cart.module';
+import { UserTestModule } from './user-test/user-test.module';
 
 
 @Module({
@@ -27,6 +28,7 @@ import { UserCartModule } from './user-cart/user-cart.module';
     UserAboutModule,
     UserWhyModule,
     UserCartModule,
+    UserTestModule,
     
   ],
   controllers: [AppController],

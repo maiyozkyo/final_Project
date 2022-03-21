@@ -77,7 +77,14 @@ a:focus {
   color: initial;
 }
 
-.btn,
+.badge{
+  background-color: white;
+}
+
+.btn{
+  background-color: orange;
+  border-color: orange;
+}
 .btn:focus {
   outline: none !important;
   -webkit-box-shadow: none;
@@ -165,7 +172,8 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 15px;
+  padding-left: 375px;
+  margin: 0 -15px;
 }
 
 .search_form .form-control {
@@ -456,8 +464,8 @@ a:focus {
   max-width: 100%;
 }
 
-.product_section .box .img-box .add_cart_btn {
-  display: inline-block;
+.product_section .box .img-box .detail_btn {
+  display: block;
   width: 175px;
   text-align: center;
   height: 45px;
@@ -465,7 +473,31 @@ a:focus {
   background-color: black;
   color: #ffffff;
   position: absolute;
-  bottom: 50%;
+  bottom: 35%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+  z-index: 3;
+}
+.product_section .box .img-box .detail_btn:hover {
+  position: absolute;
+  background-color: orange;
+  color: #ffffff;
+}
+
+.product_section .box .img-box .add_cart_btn {
+  display: block;
+  width: 175px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  background-color: black;
+  color: #ffffff;
+  position: absolute;
+  bottom: 55%;
   left: 50%;
   -webkit-transform: translate(-50%, 50%);
           transform: translate(-50%, 50%);
@@ -476,6 +508,7 @@ a:focus {
 }
 
 .product_section .box .img-box .add_cart_btn:hover {
+  position: absolute;
   background-color: orange;
   color: #ffffff;
 }
@@ -520,6 +553,11 @@ a:focus {
 }
 
 .product_section .box:hover .img-box .add_cart_btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product_section .box:hover .img-box .detail_btn {
   opacity: 1;
   visibility: visible;
 }
@@ -960,8 +998,6 @@ a:focus {
     bottom: -50px;
   }
   .carousel-indicators li, .carousel-indicators li.active {
-    
-    border-radius: 50%;
     border-color: transparent;
   }
   .carousel-indicators li {	
