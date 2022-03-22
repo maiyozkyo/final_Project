@@ -14,6 +14,7 @@ import { UserAboutModule } from './user-about/user-about.module';
 import { UserWhyModule } from './user-why/user-why.module';
 import { UserCartModule } from './user-cart/user-cart.module';
 import { UserTestModule } from './user-test/user-test.module';
+import { UserLoginModule } from './user-login/user-login.module';
 
 
 @Module({
@@ -31,6 +32,7 @@ import { UserTestModule } from './user-test/user-test.module';
     UserWhyModule,
     UserCartModule,
     UserTestModule,
+    UserLoginModule,
     
   ],
   controllers: [AppController],
