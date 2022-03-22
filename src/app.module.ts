@@ -21,6 +21,8 @@ import { UserTestModule } from './user-test/user-test.module';
     AdminHomeModule,
     AdminProductModule,
     AdminLoginModule,
+    AdminManagementModule,
+    AdminUserDetailModule,
     UserProductModule,
     AdminOrderListModule,
     UserHomeModule,
