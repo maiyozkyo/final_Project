@@ -3,13 +3,12 @@ import { UserProductService } from './user-product.service';
 
 @Controller('/product')
 export class UserProductController {
-  constructor(private userService: UserProductService){
+  constructor(private readonly userProductService: UserProductService) {}
 
-  }
   @Get()
   @Render('./User/product')
   root(@Request() req: Request){
-    return {prod_img: "/img/p1.png", prod_name: "canon m50", prod_price: 1000, prod_rating: this.userService.renderRating(5)}
+    console.log(req);
   }
 
   @Get('/detail')

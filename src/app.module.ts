@@ -15,9 +15,6 @@ import { UserWhyModule } from './user-why/user-why.module';
 import { UserCartModule } from './user-cart/user-cart.module';
 import { UserTestModule } from './user-test/user-test.module';
 import { UserLoginModule } from './user-login/user-login.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserRegisterModule } from './user-register/user-register.module';
-import entities from './Entities/All_Entities';
 
 
 @Module({
@@ -36,17 +33,6 @@ import entities from './Entities/All_Entities';
     UserCartModule,
     UserTestModule,
     UserLoginModule,
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'users',
-      entities: entities,
-      synchronize: true,
-    }),
-    UserRegisterModule,
     
   ],
   controllers: [AppController],
