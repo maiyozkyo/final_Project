@@ -22,7 +22,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
+                <form action="/admin/products/add/" class="tm-edit-product-form" method="get">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -30,7 +30,20 @@
                     </label>
                     <input
                       id="name"
-                      name="name"
+                      name="product_name"
+                      type="text"
+                      class="form-control validate"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="brand"
+                      >Product Brand
+                    </label>
+                    <input
+                      id="brand"
+                      name="brand"
                       type="text"
                       class="form-control validate"
                       required
@@ -45,6 +58,7 @@
                       class="form-control validate"
                       rows="3"
                       required
+                      name = "describe"
                     ></textarea>
                   </div>
                   <div class="form-group mb-3">
@@ -55,23 +69,24 @@
                     <select
                       class="custom-select tm-select-accounts"
                       id="category"
+                      name = 'category'
                     >
                       <option selected>Select category</option>
-                      <option value="1">New Arrival</option>
-                      <option value="2">Most Popular</option>
-                      <option value="3">Trending</option>
+                      {{#types}}
+                      <option value={{type_name}}>{{type_name}}</option>
+                      {{/types}}
                     </select>
                   </div>
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
-                            for="expire_date"
-                            >Expire Date
+                            for="import_date"
+                            >Import Date
                           </label>
                           <input
-                            id="expire_date"
-                            name="expire_date"
+                            id="import_date"
                             type="text"
+                            name="import_date"
                             class="form-control validate"
                             data-large-mode="true"
                           />
@@ -79,11 +94,37 @@
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="stock"
-                            >Units In Stock
+                            >Quantity
                           </label>
                           <input
                             id="stock"
-                            name="stock"
+                            name="in_stock"
+                            type="number"
+                            class="form-control validate"
+                            required
+                          />
+                        </div>
+                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                          <label
+                            for="price"
+                            >Price
+                          </label>
+                          <input
+                            id="price"
+                            name="price"
+                            type="number"
+                            class="form-control validate"
+                            required
+                          />
+                        </div>
+                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                          <label
+                            for="units"
+                            >Units
+                          </label>
+                          <input
+                            id="units"
+                            name = "unit"
                             type="text"
                             class="form-control validate"
                             required
@@ -123,10 +164,12 @@
     <script>
       $('.fa-shopping-cart').parent().addClass('active');
       $(function() {
-        $("#expire_date").datepicker();
+        $("#import_date").datepicker();
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
 
+    </script>
   </body>
 </html>
