@@ -14,6 +14,7 @@ export class AdminProductController {
   @Get('/add')
   @Render('./Admin/add-product')
 <<<<<<< HEAD
+<<<<<<< HEAD
   @Redirect('/admin/products')
   @UsePipes(ValidationPipe)
   async add_NewProduct(@Query() query){
@@ -25,6 +26,10 @@ export class AdminProductController {
       return {products: prods, types: categories};
     }
       return {types: categories};
+=======
+  addProduct(){
+
+>>>>>>> parent of f23b024 (create product and category: table, dto, relationship. Add services: crd (missing u) for admin product)
 =======
   addProduct(){
 
