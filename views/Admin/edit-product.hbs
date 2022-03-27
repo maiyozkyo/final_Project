@@ -25,6 +25,7 @@
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
                 <form action="" method="post" class="tm-edit-product-form">
+                  {{#product}}
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -34,7 +35,7 @@
                       id="name"
                       name="name"
                       type="text"
-                      value="Lorem Ipsum Product"
+                      value="{{product_name}}"
                       class="form-control validate"
                     />
                   </div>
@@ -47,7 +48,7 @@
                       class="form-control validate tm-small"
                       rows="5"
                       required
-                    >Lorem ipsum dolor amet gentrify glossier locavore messenger bag chillwave hashtag irony migas wolf kale chips small batch kogi direct trade shaman.</textarea>
+                    >{{describe}}</textarea>
                   </div>
                   <div class="form-group mb-3">
                     <label
@@ -59,13 +60,13 @@
                       id="category"
                     >
                       <option>Select category</option>
-                      <option value="1" selected>New Arrival</option>
-                      <option value="2">Most Popular</option>
-                      <option value="3">Trending</option>
+                      {{#types}}
+                      <option value={{type_name}}>{{type_name}}</option>
+                      {{/types}}
                     </select>
                   </div>
                   <div class="row">
-                      <div class="form-group mb-3 col-xs-12 col-sm-6">
+                      <div class="form-group mb-3 col-xs-12 col-sm-12">
                           <label
                             for="expire_date"
                             >Expire Date
@@ -74,12 +75,15 @@
                             id="expire_date"
                             name="expire_date"
                             type="text"
-                            value="22 Oct, 2020"
+                            value="{{import_date}}"
                             class="form-control validate"
                             data-large-mode="true"
                           />
-                        </div>
-                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                      </div>
+                        
+                  </div>
+                  <div class="row">
+                    <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="stock"
                             >Units In Stock
@@ -88,12 +92,25 @@
                             id="stock"
                             name="stock"
                             type="text"
-                            value="19,765"
+                            value="{{in_stock}}"
+                            class="form-control validate"
+                          />
+                        </div>
+                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                          <label
+                            for="price"
+                            >Price
+                          </label>
+                          <input
+                            id="price"
+                            name="price"
+                            type="text"
+                            value="{{price}}"
                             class="form-control validate"
                           />
                         </div>
                   </div>
-                  
+                  {{/product}}
               </div>
               <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                 <div class="tm-product-img-edit mx-auto">

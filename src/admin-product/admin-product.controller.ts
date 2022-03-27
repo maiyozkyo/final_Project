@@ -47,10 +47,14 @@ export class AdminProductController {
       return {types: categories};
   }
 
-  @Get('/edit')
+  @Get('edit')
   @Render('./Admin/edit-product')
-  editProduct(){
-
+  @Redirect('/admin/products')
+  @UsePipes(ValidationPipe)
+  async editProduct(prod_id:number){
+    const product = await this.adminProductService.get_One_Product_By_Id(prod_id).then();
+    const categories = await this.adminProductService.get_All_Type().then();
+    return {product: product, types: categories}
   }
 
   @Get('/category')
