@@ -37,9 +37,10 @@ export class AdminProductController {
   @Render('./Admin/add-product')
   @Redirect('/admin/products')
   @UsePipes(ValidationPipe)
-  async add_NewProduct(@Query() new_Product:createProductDto){
+  async add_NewProduct(@Query() query){
     const categories = await this.adminProductService.get_All_Type().then();
-    if (new_Product.product_name) {
+    if (query.length) {
+      const new_Product:createProductDto = query;
       this.adminProductService.create_Product(new_Product);
       const prods = await this.adminProductService.get_All_Products().then();
       return {products: prods, types: categories};
