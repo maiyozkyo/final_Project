@@ -1,4 +1,5 @@
 import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param} from '@nestjs/common';
+import { isNotEmpty } from 'class-validator';
 import { createProductDto } from 'src/DTO/createProduct.dto';
 import { createTypeDto } from 'src/DTO/createType.dto';
 
@@ -51,10 +52,21 @@ export class AdminProductController {
   @Render('./Admin/edit-product')
   @Redirect('/admin/products')
   @UsePipes(ValidationPipe)
-  async editProduct(prod_id:number){
-    const product = await this.adminProductService.get_One_Product_By_Id(prod_id).then();
+  async editProduct(@Query() updated_Product){
     const categories = await this.adminProductService.get_All_Type().then();
-    return {product: product, types: categories}
+    var product = await this.adminProductService.get_One_Product_By_Id(updated_Product.id).then();
+    if(updated_Product.name){
+      product.product_name = updated_Product.name;
+      product.category = updated_Product.category;
+      //product.describe = updated_Product.desciption;
+      product.import_date = updated_Product.expire_date;
+      product.in_stock = updated_Product.stock;
+      //product.link_img
+      product.price = updated_Product.price;
+      this.adminProductService.update_Product(updated_Product);
+      return {product: updated_Product, types: categories};
+    }
+    return {product: product, types: categories};
   }
 
   @Get('/category')

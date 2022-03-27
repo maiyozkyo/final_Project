@@ -1,5 +1,6 @@
 import { Type } from './../Entities/Type';
 
+
 export class createProductDto {
     
     product_name: string;
