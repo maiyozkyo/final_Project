@@ -29,10 +29,10 @@
               </thead>
               <tbody>
                 {{#products}}
-                <tr data-set={{id}}>
-                  <th scope="row"><input type="checkbox" /></th>
-                  <td class="tm-product-name">{{product_name}}</td>
-                  <td>{{ price}}</td>
+                <tr>
+                  <th scope="row"><input type="checkbox" checked/></th>
+                  <td class="tm-product-name" id={{ id }} name="id">{{ product_name }}</td>
+                  <td>{{ price }}</td>
                   <td>{{ in_stock }}</td>
                   <td>{{ import_date }}</td>
                   <td>
@@ -89,7 +89,7 @@
     $('.fa-shopping-cart').parent().addClass('active');
     $(function () {
       $(".tm-product-name").on("click", function () {
-        window.location.href = "/admin/products/edit";
+        window.location.href = "/admin/products/edit/" + $(".tm-product-name").attr("id");
       });
     });
   </script>

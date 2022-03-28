@@ -38,35 +38,42 @@ export class AdminProductController {
   @Render('./Admin/add-product')
   @Redirect('/admin/products')
   @UsePipes(ValidationPipe)
-  async add_NewProduct(@Query() new_Product:createProductDto){
+  async add_NewProduct(){
     const categories = await this.adminProductService.get_All_Type().then();
-    if (new_Product.product_name) {
-      this.adminProductService.create_Product(new_Product);
-      const prods = await this.adminProductService.get_All_Products().then();
-      return {products: prods, types: categories};
-    }
-      return {types: categories};
+    return { types: categories };
   }
 
-  @Get('edit')
+  @Get('add/new-product')
+  @Render('./Admin/products')
+  @Redirect('/admin/products')
+  @UsePipes(ValidationPipe)
+  async post_newProduct(@Query() new_Product: createProductDto){
+    this.adminProductService.create_Product(new_Product);
+    const categories = await this.adminProductService.get_All_Type().then();
+    const prods = await this.adminProductService.get_All_Products().then();
+    return { products: prods, types: categories };
+  }
+
+  @Get('edit/:id')
   @Render('./Admin/edit-product')
   @Redirect('/admin/products')
   @UsePipes(ValidationPipe)
-  async editProduct(@Query() updated_Product){
+  async postUpdatedProduct(@Param() id, @Query() updated_Product){
     const categories = await this.adminProductService.get_All_Type().then();
-    var product = await this.adminProductService.get_One_Product_By_Id(updated_Product.id).then();
-    if(updated_Product.name){
-      product.product_name = updated_Product.name;
-      product.category = updated_Product.category;
-      //product.describe = updated_Product.desciption;
-      product.import_date = updated_Product.expire_date;
-      product.in_stock = updated_Product.stock;
-      //product.link_img
-      product.price = updated_Product.price;
-      this.adminProductService.update_Product(updated_Product);
-      return {product: updated_Product, types: categories};
-    }
-    return {product: product, types: categories};
+    const product = await this.adminProductService.get_One_Product_By_Id(id).then();
+
+    if(updated_Product.name === undefined) return {prod: product, types: categories};
+
+    product.product_name = updated_Product.name;
+    // //product.category = updated_Product.category;
+    // //product.describe = updated_Product.desciption;
+    product.import_date = updated_Product.expire_date;
+    product.in_stock = updated_Product.stock;
+    // //product.link_img
+    product.price = updated_Product.price;
+    this.adminProductService.update_Product(product);
+    //const products = await this.adminProductService.get_All_Products().then();
+    return {prod: product, types: categories};
   }
 
   @Get('/category')

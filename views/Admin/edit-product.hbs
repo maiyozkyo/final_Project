@@ -24,8 +24,8 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="/admin/products/edit/" method="get" class="tm-edit-product-form">
-                  {{#product}}
+                {{#prod}}
+                <form action="/admin/products/edit/{{id}}" method="get" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -61,29 +61,11 @@
                       id="category"
                       name = 'category'
                     >
-                      <option selected>Select category</option>
-                      {{#each types as |type|}}
-                      <option value={{type.type_name}}>{{type.type_name}}</option>
-                      {{/each}}
+                      <option value={{type_name}} selected>{{type_name}}</option>
+                      {{#types}}
+                      <option value={{type_name}}>{{type_name}}</option>
+                      {{/types}}
                     </select>
-                  </div>
-                  
-                  <div class="row">
-                      <div class="form-group mb-3 col-xs-12 col-sm-12">
-                          <label
-                            for="expire_date"
-                            >Expire Date
-                          </label>
-                          <input
-                            id="expire_date"
-                            name="expire_date"
-                            type="text"
-                            value="{{import_date}}"
-                            class="form-control validate"
-                            data-large-mode="true"
-                          />
-                      </div>
-                        
                   </div>
                   <div class="row">
                     <div class="form-group mb-3 col-xs-12 col-sm-6">
@@ -113,7 +95,7 @@
                           />
                         </div>
                   </div>
-                  {{/product}}
+                  
               </div>
               <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                 <div class="tm-product-img-edit mx-auto">
@@ -137,6 +119,7 @@
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
               </div>
             </form>
+            {{/prod}}
             </div>
           </div>
         </div>

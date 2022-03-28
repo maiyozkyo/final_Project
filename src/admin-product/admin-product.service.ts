@@ -34,7 +34,7 @@ export class AdminProductService {
     }
 
     async update_Product(product: Product): Promise<Product> {
-        var current_Product = await this.get_One_Product_By_Id(product.id);
+        //const current_Product = await this.get_One_Product_By_Id(product.id);
         return this.productRepo.save(product);
     }
 
