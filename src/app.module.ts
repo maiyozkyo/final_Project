@@ -47,7 +47,7 @@ import entities from './Entities/All_Entities';
       synchronize: true,
     }),
     UserRegisterModule,
-    
+    TypeOrmModule.forFeature(entities)
   ],
   controllers: [AppController],
   providers: [AppService],
