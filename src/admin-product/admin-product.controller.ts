@@ -16,7 +16,9 @@ export class AdminProductController {
   @Render('./Admin/products')
   async root(@Query() query){
     const prods = await this.adminProductService.get_All_Products().then();
-    const categories = await this.adminProductService.get_All_Type().then();    
+    const categories = await this.adminProductService.get_All_Type().then(); 
+    // console.log(prods);
+
     return {products: prods, types: categories};
   }
 
@@ -30,7 +32,7 @@ export class AdminProductController {
     }
 
     const prods = await this.adminProductService.get_All_Products().then();
-    const categories = await this.adminProductService.get_All_Type().then();
+    const categories = await this.adminProductService.get_All_Type().then();    
     return {products: prods, types: categories};
   }
 
@@ -87,6 +89,7 @@ export class AdminProductController {
     const categories = await this.adminProductService.get_All_Type().then();
     const productDto:createProductDto = body;
     const updated_Prod = await this.adminProductService.update_Product(productDto, body.id).then();
+    
     return {prod: updated_Prod, types: categories};
   }
 

@@ -31,7 +31,7 @@
                 {{#products}}
                 <tr>
                   <th scope="row"><input name="id" value={{id}} class="choose-to-del" type="checkbox" /></th>
-                  <td class="tm-product-name" id={{ id }} name="id">{{ product_name }}</td>
+                  <td class="tm-product-name" id={{ id }} name="id"><a style="color: white" href="/admin/products/edit/{{id}}">{{ product_name }}</a></td>
                   <td>{{ price }}</td>
                   <td>{{ in_stock }}</td>
                   <td>{{ import_date }}</td>
@@ -87,11 +87,6 @@
   {{> scriptAdmin}}
   <script>
     $('.fa-shopping-cart').parent().addClass('active');
-    $(function () {
-      $(".tm-product-name").on("click", function () {
-        window.location.href = "/admin/products/edit/" + $(".tm-product-name").attr("id");
-      });
-    });
   </script>
   <script>
     $("#del-btn").click(function() {
