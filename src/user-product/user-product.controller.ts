@@ -1,4 +1,8 @@
-import { Controller, Get, Render, Request } from '@nestjs/common';
+import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param} from '@nestjs/common';
+import { createProductDto } from 'src/DTO/createProduct.dto';
+import { createTypeDto } from 'src/DTO/createType.dto';
+
+import { Product } from 'src/Entities/Product';
 import { UserProductService } from './user-product.service';
 
 @Controller('/product')
@@ -8,8 +12,10 @@ export class UserProductController {
   }
   @Get()
   @Render('./User/product')
-  root(@Request() req: Request){
-    return {prod_img: "/img/p1.png", prod_name: "canon m50", prod_price: 1000, prod_rating: this.userService.renderRating(5)}
+  async root(@Query() query){
+    const prods = await this.userService.get_All_Products().then();
+    console.log(prods);
+    return {products: prods};
   }
 
   @Get('/detail')
