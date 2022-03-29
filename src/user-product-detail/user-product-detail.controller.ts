@@ -1,10 +1,14 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Param, Query } from '@nestjs/common';
 import { UserProductDetailService } from './user-product-detail.service';
 
-@Controller('/detail')
+@Controller('/product/detail')
 export class UserProductDetailController {
   constructor(private readonly userProductDetailService: UserProductDetailService) {}
-  @Get()
+  @Get('/:id')
   @Render("./User/productDetail")
-  root(){}
+  async root(@Param() params){
+    const prods = await this.userProductDetailService.get_One_Product_By_Id(params.id);
+    console.log(prods);
+    return {prods};
+  }
 }

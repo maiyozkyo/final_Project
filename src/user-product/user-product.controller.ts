@@ -27,10 +27,4 @@ export class UserProductController {
     console.log(prods);
     return {prods};
   }
-
-  @Get('/detail')
-  @Render('./User/productDetail')
-  detailRouter(@Request() req: Request){
-    console.log(req);
-  }
 }
