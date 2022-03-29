@@ -8,6 +8,7 @@ export class UserProductDetailController {
   @Render("./User/productDetail")
   async root(@Param() params){
     const prods = await this.userProductDetailService.get_One_Product_By_Id(params.id);
+    console.log(params.id);
     console.log(prods);
     return {prods};
   }

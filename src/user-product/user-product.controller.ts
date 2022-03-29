@@ -10,13 +10,23 @@ export class UserProductController {
   constructor(private userService: UserProductService){
 
   }
-  @Get()
+  @Get('/:page')
   @Render('./User/product')
-  async root(@Query() query){
-
-    const prods = await this.userService.get_All_Products(0,9).then();
-    console.log(prods);
-    return {prods};
+  async root(@Param() param){
+    let page = param.page;
+    if(!page || isNaN(page)) page = 1;
+    else{
+      page = parseInt(page);
+    }
+    
+    const prods = await this.userService.get_All_Products((page-1)*9,9).then();
+    const total  = await this.userService.getTotalProducts();
+    console.log(page);
+    console.log(total);
+    const totalPages = Math.ceil(total/9);
+    const nextPage = page + 1;
+    const prevPage = page - 1;
+    return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
   }
 
   @Get('?page')
