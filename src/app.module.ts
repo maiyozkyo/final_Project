@@ -41,7 +41,7 @@ import entities from './Entities/All_Entities';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'Quanghuy2807',
       database: 'users',
       entities: entities,
       synchronize: true,
