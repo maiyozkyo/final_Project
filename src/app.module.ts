@@ -18,6 +18,7 @@ import { UserLoginModule } from './user-login/user-login.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRegisterModule } from './user-register/user-register.module';
 import entities from './Entities/All_Entities';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
@@ -36,15 +37,16 @@ import entities from './Entities/All_Entities';
     UserCartModule,
     UserTestModule,
     UserLoginModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Quanghuy2807',
-      database: 'users',
+      url: process.env.DATABASE_URL,
+      type: 'postgres',
+      ssl: {
+        rejectUnauthorized: false,
+      },
       entities: entities,
-      synchronize: true,
+      synchronize: true, // This for development
+      autoLoadEntities: true,
     }),
     UserRegisterModule,
     
