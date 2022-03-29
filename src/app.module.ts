@@ -41,15 +41,7 @@ import entities from './Entities/All_Entities';
       host: 'localhost',
       port: 3306,
       username: 'root',
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      password: '',
-=======
       password: '123456',
->>>>>>> Stashed changes
-=======
-      password: '123456',
->>>>>>> Stashed changes
       database: 'users',
       entities: entities,
       synchronize: true,

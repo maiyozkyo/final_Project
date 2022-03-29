@@ -16,8 +16,12 @@ export class UserProductService {
 
     ) {}
     
-    get_All_Products(): Promise<Product[]> {
-        return this.productRepo.find();
+    async get_All_Products(offset = 0, limit = 9): Promise<Product[]> {
+        const [result, total] = await this.productRepo.findAndCount({
+            take: limit, 
+            skip: offset
+        })
+        return result;
     }
 
     async get_One_Product_By_Id(id: number): Promise<Product> {

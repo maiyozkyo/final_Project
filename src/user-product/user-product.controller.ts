@@ -13,9 +13,19 @@ export class UserProductController {
   @Get()
   @Render('./User/product')
   async root(@Query() query){
-    const prods = await this.userService.get_All_Products().then();
+
+    const prods = await this.userService.get_All_Products(0,9).then();
     console.log(prods);
-    return {products: prods};
+    return {prods};
+  }
+
+  @Get('?page')
+  @Render('./User/product')
+  async paginiation(@Query() query){
+    let {page} = query.query;
+    const prods = await this.userService.get_All_Products(0,9).then();
+    console.log(prods);
+    return {prods};
   }
 
   @Get('/detail')
