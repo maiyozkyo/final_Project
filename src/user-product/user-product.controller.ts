@@ -1,4 +1,8 @@
-import { Controller, Get, Render, Request } from '@nestjs/common';
+import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param} from '@nestjs/common';
+import { createProductDto } from 'src/DTO/createProduct.dto';
+import { createTypeDto } from 'src/DTO/createType.dto';
+
+import { Product } from 'src/Entities/Product';
 import { UserProductService } from './user-product.service';
 
 @Controller('/product')
@@ -6,15 +10,31 @@ export class UserProductController {
   constructor(private userService: UserProductService){
 
   }
-  @Get()
+  @Get('/:page')
   @Render('./User/product')
-  root(@Request() req: Request){
-    return {prod_img: "/img/p1.png", prod_name: "canon m50", prod_price: 1000, prod_rating: this.userService.renderRating(5)}
+  async root(@Param() param){
+    let page = param.page;
+    if(!page || isNaN(page)) page = 1;
+    else{
+      page = parseInt(page);
+    }
+    
+    const prods = await this.userService.get_All_Products((page-1)*9,9).then();
+    const total  = await this.userService.getTotalProducts();
+    console.log(page);
+    console.log(total);
+    const totalPages = Math.ceil(total/9);
+    const nextPage = page + 1;
+    const prevPage = page - 1;
+    return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
   }
 
-  @Get('/detail')
-  @Render('./User/productDetail')
-  detailRouter(@Request() req: Request){
-    console.log(req);
+  @Get('?page')
+  @Render('./User/product')
+  async paginiation(@Query() query){
+    let {page} = query.query;
+    const prods = await this.userService.get_All_Products(0,9).then();
+    console.log(prods);
+    return {prods};
   }
 }

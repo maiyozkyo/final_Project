@@ -1,6 +1,6 @@
 import { Controller, Get, Render, Request, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-
+import { Product } from './Entities/Product';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
