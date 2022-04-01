@@ -10,11 +10,5 @@ export class AppController {
   root(@Request() req: Request){
     
   }
-
-  @Get('./test')
-  async getHello(): Promise<Product[]>{
-      return this.appService.getAll();
-  }
- 
 }
 

@@ -31,16 +31,17 @@
         </h2>
       </div>
       <div class="row">
+        {{#prods}}
         <div class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
               <img src={{prod_img}} alt="" name={{prod_img}}>
-              <a href="/detail" class="add_cart_btn">
+              <a href="detail/{{id}}" class="add_cart_btn">
                 <span>
                   Add To Cart
                 </span>
               </a>
-              <a href="/detail" class="detail_btn">
+              <a href="detail/{{id}}" class="detail_btn">
                 <span>
                   Detail
                 </span>
@@ -48,11 +49,11 @@
             </div>
             <div class="detail-box">
               <h5 name={{prod_name}}>
-                {{prod_name}}
+                {{product_name}}
               </h5>
               <div class="product_info">
                 <h5 name={{prod_price}}>
-                  <span>$</span> {{prod_price}}
+                  <span>$</span> {{price}}
                 </h5>
                 <div class="star_container">
 
@@ -61,17 +62,28 @@
             </div>
           </div>
         </div>
+        {{/prods}}
       </div>
-      <div class="btn_box">
-        <a href="/detail" class="view_more-link">
-          View More
-        </a>
-      </div>
+      <nav aria-label="Page navigation example">
+        
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="{{prevPage}}"" tabindex="-1">Previous</a>
+          </li>
+          {{#pages}}
+             <li class="page-item"><a class="page-link" href="./{{.}}">{{.}}</a></li>
+          {{/pages}}
+          <li>
+            <a class="page-link" href="{{nextPage}}"">Next</a>
+          </li>
+        </ul>
+       
+      </nav>
     </div>
   </section>
 
   <!-- end product section -->
-  
+
   {{> footer}}
   {{> script}}
   <script>
