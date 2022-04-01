@@ -1,7 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Render, Post } from '@nestjs/common';
 import { UserRegisterService } from './user-register.service';
 
-@Controller('user-register')
+@Controller('/register')
 export class UserRegisterController {
   constructor(private readonly userRegisterService: UserRegisterService) {}
+
+  @Get()
+  @Render('./User/register')
+  root(){
+    
+  }
 }

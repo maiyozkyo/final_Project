@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login Page</title>
+    <title>Create an account</title>
     {{> link}}
     <link rel="stylesheet" href="/css/templatemo-style.css">
 
@@ -22,12 +22,44 @@
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
               <div class="col-12 text-center">
-                <h2 class="tm-block-title mb-4">Welcome to Dashboard, Login</h2>
+                <h2 class="tm-block-title mb-4">Create an account</h2>
               </div>
             </div>
             <div class="row mt-2">
               <div class="col-12">
                 <form action="/admin" method="post" class="tm-login-form">
+                  <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input
+                      name="fullname"
+                      type="text"
+                      class="form-control validate"
+                      id="fullname"
+                      value=""
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                      name="email"
+                      type="email"
+                      class="form-control validate"
+                      id="email"
+                      value=""
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input
+                      name="address"
+                      type="text"
+                      class="form-control validate"
+                      id="address"
+                      value=""
+                    />
+                  </div>
                   <div class="form-group">
                     <label for="username">Username</label>
                     <input
@@ -50,17 +82,25 @@
                       required
                     />
                   </div>
+                  <div class="form-group mt-3">
+                    <label for="re-password">Confirm Password</label>
+                    <input
+                      name="re-password"
+                      type="password"
+                      class="form-control validate"
+                      id="re-password"
+                      value=""
+                      required
+                    />
+                  </div>
                   <div class="form-group mt-4">
                     <button
                       type="submit"
                       class="btn btn-primary btn-block text-uppercase"
                     >
-                      Login
+                      Sign Up
                     </button>
                   </div>
-                  <button class="mt-5 btn btn-primary btn-block text-uppercase">
-                    Forgot your password?
-                  </button>
                 </form>
               </div>
             </div>
