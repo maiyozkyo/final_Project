@@ -20,6 +20,11 @@ export class User{
 
     @Column({
         nullable:false,
+    })
+    user_password: string;
+
+    @Column({
+        nullable:false,
         default: '',
     })
     user_fullname: string;
