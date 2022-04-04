@@ -18,6 +18,11 @@ import { UserLoginModule } from './user-login/user-login.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRegisterModule } from './user-register/user-register.module';
 import entities from './Entities/All_Entities';
+<<<<<<< Updated upstream
+=======
+import { ConfigModule } from '@nestjs/config';
+import { GoogleLoginModule } from './google-login/google-login.module';
+>>>>>>> Stashed changes
 
 
 @Module({
@@ -45,8 +50,20 @@ import entities from './Entities/All_Entities';
       database: 'users',
       entities: entities,
       synchronize: true,
+<<<<<<< Updated upstream
+=======
+      // url: process.env.DATABASE_URL,
+      // type: 'postgres',
+      // ssl: {
+      //   rejectUnauthorized: false,
+      // },
+      // entities: entities,
+      // synchronize: true, // This for development
+      // autoLoadEntities: true,
+>>>>>>> Stashed changes
     }),
     UserRegisterModule,
+    GoogleLoginModule,
     
   ],
   controllers: [AppController],
