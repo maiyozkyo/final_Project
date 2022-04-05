@@ -20,6 +20,8 @@ import { UserRegisterModule } from './user-register/user-register.module';
 import {GoogleLoginModule} from './google-login/google-login.module'
 import entities from './Entities/All_Entities';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { UserProfileModule } from './user-profile/user-profile.module';
 
 
 @Module({
@@ -52,6 +54,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
     UserRegisterModule,
     GoogleLoginModule,
+    UserProfileModule,
     
   ],
   controllers: [AppController],
