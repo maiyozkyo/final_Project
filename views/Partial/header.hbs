@@ -25,30 +25,14 @@
         </from>
         
         <div class="user_option_box">
-          {{#if user}}
-          <a href="/logout" class="account-link">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span>
-              Logout
-            </span>
-          </form>
-          {{else}}
           <a href="/login" class="account-link">
             <i class="fa fa-user" aria-hidden="true"></i>
-<<<<<<< HEAD
-            <span>
-              Login
-            </span>
-          </form>
-          {{/if}}
-=======
             {{#if user}}
-            <a href="/profile"><span>Hello {{user.lastName}} {{user.firstName}}!</span></a><a href="/logout">Logout</a>
+            <span>Hello {{user.lastName}} {{user.firstName}}!</span><a href="/logout">Logout</a>
             {{else}}
             <a href="/login">Login</a>
             {{/if}}
           </a>
->>>>>>> ac9e4bd12d706e52e14a5a796478f296242c4567
           <a href="cart" class="nav-link">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             <span>
