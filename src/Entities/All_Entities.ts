@@ -4,10 +4,6 @@ import {Type} from './Type'
 import {User} from './User'
 
 
-<<<<<<< HEAD
-const entities = [Product, Type, Account];
-=======
-const entities = [Product, Type, User];
->>>>>>> 99769659441a1b4c7b7268b8e30e1018e735c95d
+const entities = [Product, Type, Account, User];
 
 export default entities;
