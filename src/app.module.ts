@@ -20,7 +20,6 @@ import { UserRegisterModule } from './user-register/user-register.module';
 import {GoogleLoginModule} from './google-login/google-login.module'
 import entities from './Entities/All_Entities';
 import { ConfigModule } from '@nestjs/config';
-import { UsersModule } from './users/users.module';
 
 
 @Module({
@@ -43,7 +42,10 @@ import { UsersModule } from './users/users.module';
     TypeOrmModule.forRoot({
       url: process.env.DATABASE_URL,
       type: 'postgres',
-      ssl: process.env.DATABASE_URL? true : false,
+      //ssl: process.env.DATABASE_URL? true : false,
+      ssl: {
+        rejectUnauthorized: false,
+      },
       entities: entities,
       synchronize: true, // This for development
       autoLoadEntities: true,
