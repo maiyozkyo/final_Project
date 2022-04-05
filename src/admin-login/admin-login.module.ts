@@ -8,6 +8,8 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
+import { SessionSerializer } from './session.serializer';
+import { PassportModule } from '@nestjs/passport';
 
 
 @Module({
@@ -16,10 +18,12 @@ import { JwtStrategy } from './jwt.strategy';
     UsersModule,
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '15s' },
     }),
+    PassportModule.register({session: true})
   ],
   controllers: [AdminLoginController],
-  providers: [AdminLoginService, LocalStrategy, JwtStrategy]
+  providers: [AdminLoginService, LocalStrategy, JwtStrategy, SessionSerializer],
+  exports: [AdminLoginService]
 })
 export class AdminLoginModule {}

@@ -3,6 +3,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import * as hbs from 'hbs';
+import * as session from 'express-session';
+import * as passport from 'passport'
 
 var pagination = require('./admin-management/admin.pagination.helper');
 
@@ -16,6 +18,18 @@ async function bootstrap() {
   hbs.registerHelper('previous', pagination.previous);
   hbs.registerHelper('next', pagination.next);
   app.setViewEngine('hbs');
+  
+  app.use(
+    session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {maxAge: 36000},
+    }),
+  )
+
+  app.use(passport.initialize());
+  app.use(passport.session());
   
   await app.listen(process.env.PORT || 3000);
 }
