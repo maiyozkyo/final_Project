@@ -18,6 +18,8 @@ import { UserLoginModule } from './user-login/user-login.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRegisterModule } from './user-register/user-register.module';
 import entities from './Entities/All_Entities';
+import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 
 
 @Module({
@@ -36,18 +38,18 @@ import entities from './Entities/All_Entities';
     UserCartModule,
     UserTestModule,
     UserLoginModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'users',
+      url: process.env.DATABASE_URL,
+      type: 'postgres',
+      ssl: process.env.DATABASE_URL? true : false,
       entities: entities,
-      synchronize: true,
+      synchronize: true, // This for development
+      autoLoadEntities: true,
     }),
     UserRegisterModule,
-    TypeOrmModule.forFeature(entities)
+    TypeOrmModule.forFeature(entities),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
