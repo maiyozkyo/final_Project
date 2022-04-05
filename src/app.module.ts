@@ -19,6 +19,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRegisterModule } from './user-register/user-register.module';
 import {GoogleLoginModule} from './google-login/google-login.module'
 import entities from './Entities/All_Entities';
+<<<<<<< Updated upstream
+=======
+import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { UserProfileModule } from './user-profile/user-profile.module';
+>>>>>>> Stashed changes
 
 
 @Module({
@@ -49,6 +55,7 @@ import entities from './Entities/All_Entities';
     }),
     UserRegisterModule,
     GoogleLoginModule,
+    UserProfileModule,
     
   ],
   controllers: [AppController],
