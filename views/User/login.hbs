@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login Page</title>
-    {{> link}}
-    <link rel="stylesheet" href="/css/templatemo-style.css">
 
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Login Page</title>
+  {{> link}}
+  <link rel="stylesheet" href="/css/templatemo-style.css">
 
-  <body>
-    <div>
-      <nav class="navbar navbar-expand-xl" style="color:orange; align-items: center; justify-content:center; font-size: 3rem">
-        <a href="/" style="color:orange;">TechHub</a>
-      </nav>
-    </div>
-    <div class="container tm-mt-big tm-mb-big">
-      <div class="row">
-        <div class="col-12 mx-auto tm-login-col">
-          <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-            <div class="row">
-              <div class="col-12 text-center">
-                <h2 class="tm-block-title mb-4">Welcome to Dashboard, Login</h2>
-              </div>
+</head>
+
+<body>
+  <div>
+    <nav class="navbar navbar-expand-xl"
+      style="color:orange; align-items: center; justify-content:center; font-size: 3rem">
+      <a href="/" style="color:orange;">TechHub</a>
+    </nav>
+  </div>
+  <div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+      <div class="col-12 mx-auto tm-login-col">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2 class="tm-block-title mb-4">Welcome to Dashboard, Login</h2>
             </div>
             <div class="row mt-2">
               <div class="col-12">
@@ -58,17 +59,26 @@
                       Login
                     </button>
                   </div>
+                  <button type="button" onclick="window.location.href='/register'" class="mt-5 btn btn-primary btn-block text-uppercase">
+                    Create an account
+                  </button>
                   <button class="mt-5 btn btn-primary btn-block text-uppercase">
                     Forgot your password?
                   </button>
                 </form>
               </div>
+              <button type="button" onclick="window.location.href='/google'" class="mt-5 btn btn-primary btn-block text-uppercase">
+                <i class="fab fa-google-plus-g"></i> Sign in with Google+
+              </button>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    {{> footer }}
-    {{> script}}
-  </body>
+  </div>
+  {{> footer }}
+  {{> script}}
+</body>
+
 </html>

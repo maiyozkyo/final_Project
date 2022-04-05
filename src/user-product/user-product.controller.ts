@@ -24,8 +24,14 @@ export class UserProductController {
     console.log(page);
     console.log(total);
     const totalPages = Math.ceil(total/9);
-    const nextPage = page + 1;
-    const prevPage = page - 1;
+    let nextPage = page + 1;
+    if(nextPage > totalPages){
+      nextPage = totalPages;
+    }
+    let prevPage = page - 1;
+    if(prevPage < 1){
+      prevPage = 1;
+    }
     return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
   }
 

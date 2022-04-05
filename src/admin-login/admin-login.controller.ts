@@ -17,20 +17,19 @@ export class AdminLoginController {
     
   }
 
-  @UseGuards(LocalAuthGuard)
+  //@UseGuards(LocalAuthGuard)
   @Post()
   async login(@Body() body, @Res() res,  @Req() req){
-    const result = await this.adminLoginService.validateUser(body.username, body.password)
     
-    console.log(this.adminLoginService.login(req.user));
+    const result = await this.adminLoginService.validateUser(body.username, body.password)
+  
     if (result){
       return res.redirect('/admin/home')
     }
     
-    else {  
+    else {
       return res.redirect('/admin/')
     }
-      
   }
 
   @UseGuards(JwtAuthGuard)
