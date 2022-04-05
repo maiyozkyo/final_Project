@@ -21,8 +21,6 @@ export class UserProductController {
     
     const prods = await this.userService.get_All_Products((page-1)*9,9).then();
     const total  = await this.userService.getTotalProducts();
-    console.log(page);
-    console.log(total);
     const totalPages = Math.ceil(total/9);
     let nextPage = page + 1;
     if(nextPage > totalPages){
@@ -40,7 +38,6 @@ export class UserProductController {
   async paginiation(@Query() query){
     let {page} = query.query;
     const prods = await this.userService.get_All_Products(0,9).then();
-    console.log(prods);
     return {prods};
   }
 }
