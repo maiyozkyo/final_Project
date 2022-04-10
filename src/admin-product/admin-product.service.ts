@@ -5,6 +5,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from 'src/Entities/Product';
 import { Repository } from 'typeorm';
+import { isEmpty } from 'class-validator';
 
 @Injectable()
 export class AdminProductService {
@@ -32,9 +33,11 @@ export class AdminProductService {
         return this.productRepo.save(new_Product);
     }
 
-    async update_Product(product: Product): Promise<Product> {
-        const current_Product = await this.get_One_Product_By_Id(product.id);
-        return this.productRepo.save(current_Product);
+    async update_Product(productDto: createProductDto, id: number): Promise<Product> {
+        await this.delete_Product(id);
+        const product = await this.create_Product(productDto);
+        product.id = id;
+        return this.productRepo.save(product);
     }
 
     async delete_Product(id: number): Promise<Product> {

@@ -19,12 +19,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRegisterModule } from './user-register/user-register.module';
 import {GoogleLoginModule} from './google-login/google-login.module'
 import entities from './Entities/All_Entities';
-<<<<<<< Updated upstream
-=======
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
->>>>>>> Stashed changes
 
 @Module({
   imports: [
@@ -42,6 +39,7 @@ import { UserProfileModule } from './user-profile/user-profile.module';
     UserCartModule,
     UserTestModule,
     UserLoginModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
