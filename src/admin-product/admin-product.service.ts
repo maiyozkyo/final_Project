@@ -20,7 +20,7 @@ export class AdminProductService {
 
     async get_One_Product_By_Id(id: number): Promise<Product> {
         try {
-            return this.productRepo.findOneOrFail(id);
+            return this.productRepo.findOneOrFail({where: {id: id}});
         } catch (error) {
             //i dont know how to handle this
             throw error;
@@ -52,7 +52,7 @@ export class AdminProductService {
 
     async get_One_type_By_Name(name: string): Promise<Type> {
         try {
-            return this.typeRepo.findOneOrFail(name);
+            return this.typeRepo.findOneOrFail({where: {type_name: name}});
         } catch (error) {
             //i dont know how to handle this
             throw error;

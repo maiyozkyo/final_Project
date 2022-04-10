@@ -7,14 +7,11 @@ export class GoogleLoginController {
   constructor(private readonly googleLoginService: GoogleLoginService) {}
   @Get()
   @UseGuards(AuthGuard('google'))
-  async googleAuth(@Req() req) {}
+  async signInWithGoogle(@Req() req) {}
 
   @Get('redirect')
-  @Render('./User/home')
   @UseGuards(AuthGuard('google'))
-  googleAuthRedirect(@Req() req) {
-    const user = this.googleLoginService.googleLogin(req);
-    console.log(user);
-    return user;
+  async signInWithGoogleRedirect(@Req() req) {
+    return this.googleLoginService.signInWithGoogle(req);
   }
 }
