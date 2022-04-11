@@ -13,7 +13,7 @@ export class AdminUserDetailController {
   }
 
   @Post()
-  Delete(@Body() body){
-    this.adminUserDetailService.deleteById(body.user_id);
+  async Delete(@Body() body){
+    await this.adminUserDetailService.deleteById(body.user_id);
   }
 }

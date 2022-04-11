@@ -123,6 +123,15 @@
           $(this).removeClass('is-invalid');
         }
       });
+    
+    $('#price, #quantity').on('input', function(){
+        if(this.value == "" || isNaN(this.value)){
+          $(this).addClass('is-invalid');
+        }
+        else{
+          $(this).removeClass('is-invalid');
+        }
+      });
   </script>
 </body>
 
