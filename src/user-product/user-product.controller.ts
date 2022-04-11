@@ -22,8 +22,14 @@ export class UserProductController {
     const prods = await this.userService.get_All_Products((page-1)*9,9).then();
     const total  = await this.userService.getTotalProducts();
     const totalPages = Math.ceil(total/9);
-    const nextPage = page + 1;
-    const prevPage = page - 1;
+    let nextPage = page + 1;
+    if(nextPage > totalPages){
+      nextPage = totalPages;
+    }
+    let prevPage = page - 1;
+    if(prevPage < 1){
+      prevPage = 1;
+    }
     return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
   }
 

@@ -17,9 +17,11 @@ import { UserTestModule } from './user-test/user-test.module';
 import { UserLoginModule } from './user-login/user-login.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRegisterModule } from './user-register/user-register.module';
+import { GoogleLoginModule } from './google-login/google-login.module';
 import entities from './Entities/All_Entities';
 import { ConfigModule } from '@nestjs/config';
-
+import { UsersModule } from './users/users.module';
+import { UserProfileModule } from './user-profile/user-profile.module';
 
 @Module({
   imports: [
@@ -49,6 +51,8 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
     }),
     UserRegisterModule,
+    GoogleLoginModule,
+    UserProfileModule,
     
   ],
   controllers: [AppController],

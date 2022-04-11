@@ -23,15 +23,15 @@
                   <th scope="col">PRODUCT NAME</th>
                   <th scope="col">Price</th>
                   <th scope="col">IN STOCK</th>
-                  <th scope="col">EXPIRE DATE</th>
+                  <th scope="col">IMPORTED DATE</th>
                   <th scope="col">&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
                 {{#products}}
                 <tr>
-                  <th scope="row"><input type="checkbox" checked/></th>
-                  <td class="tm-product-name" id={{ id }} name="id">{{ product_name }}</td>
+                  <th scope="row"><input name="id" value={{id}} class="choose-to-del" type="checkbox" /></th>
+                  <td class="tm-product-name" id={{ id }} name="id"><a style="color: white" href="/admin/products/edit/{{id}}">{{ product_name }}</a></td>
                   <td>{{ price }}</td>
                   <td>{{ in_stock }}</td>
                   <td>{{ import_date }}</td>
@@ -49,7 +49,7 @@
           <!-- table container -->
           <a href="/admin/products/add" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
           <form action="" id="delete_form" method="post">
-            <button class="btn btn-primary btn-block text-uppercase"> Delete selected products </button>
+            <button class="btn btn-primary btn-block text-uppercase" id="del-btn"> Delete selected products </button>
           </form>
         </div>
       </div>
@@ -87,13 +87,12 @@
   {{> scriptAdmin}}
   <script>
     $('.fa-shopping-cart').parent().addClass('active');
-    $(function () {
-      $(".tm-product-name").on("click", function () {
-        window.location.href = "/admin/products/edit/" + $(".tm-product-name").attr("id");
-      });
-    });
   </script>
+  <script>
+    $("#del-btn").click(function() {
 
+    })
+  </script>
 </body>
 
 </html>

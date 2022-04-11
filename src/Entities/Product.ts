@@ -39,7 +39,6 @@ export class Product{
     describe: string;
 
     @ManyToOne(type => Type, product => product.type_name )
-    @JoinColumn()
     category: Type
 
 

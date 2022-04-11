@@ -12,6 +12,7 @@ export class UserRegisterService {
     ) {}
 
     registerUser(user: createUserDto){
+        console.log(user);
         user.user_password = this.hashPassword(user.user_password)
         this.userRepo.create(user)
         return this.userRepo.save(user)

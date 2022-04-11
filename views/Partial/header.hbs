@@ -1,4 +1,3 @@
-
 <!-- header section strats -->
 <header class="header_section">
   <div class="header_top">
@@ -26,21 +25,14 @@
         </from>
         
         <div class="user_option_box">
-          {{#if user}}
-          <a href="/logout" class="account-link">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span>
-              Logout
-            </span>
-          </form>
-          {{else}}
           <a href="/login" class="account-link">
             <i class="fa fa-user" aria-hidden="true"></i>
-            <span>
-              Login
-            </span>
-          </form>
-          {{/if}}
+            {{#if user}}
+            <span>Hello {{user.lastName}} {{user.firstName}}!</span><a href="/logout">Logout</a>
+            {{else}}
+            <a href="/login">Login</a>
+            {{/if}}
+          </a>
           <a href="cart" class="nav-link">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             <span>
@@ -55,12 +47,13 @@
   <div class="header_bottom">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand hub" href="./">
+        <a class="navbar-brand hub" href="/home">
           <span>Tech</span>
           <span>Hub</span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class=""></span>
         </button>
 
@@ -73,14 +66,14 @@
               <a class="nav-link" href="/about"> About</a>
             </li>
             <li class="nav-item dropdown dropbtn">
-                  <a class="nav-link" href="/product/1">Products</a>
-                  <div class="dropdown-content">
-                    <a href="./product">Phone</a>
-                    <a href="./product">Laptop</a>
-                    <a href="./product">Tablet</a>
-                    <a href="./product">Accessories</a>
-                  </div>
-                </li>
+              <a class="nav-link" href="/product/1">Products</a>
+              <div class="dropdown-content">
+                <a href="./product">Phone</a>
+                <a href="./product">Laptop</a>
+                <a href="./product">Tablet</a>
+                <a href="./product">Accessories</a>
+              </div>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/why">Why Us</a>
             </li>

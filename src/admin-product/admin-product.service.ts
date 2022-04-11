@@ -21,7 +21,7 @@ export class AdminProductService {
 
     async get_One_Product_By_Id(id: number): Promise<Product> {
         try {
-            return this.productRepo.findOneOrFail(id);
+            return this.productRepo.findOneOrFail({where: {id: id}});
         } catch (error) {
             //i dont know how to handle this
             throw error;
@@ -33,9 +33,12 @@ export class AdminProductService {
         return this.productRepo.save(new_Product);
     }
 
-    async update_Product(product: Product): Promise<Product> {
-        //const current_Product = await this.get_One_Product_By_Id(product.id);
-        return this.productRepo.save(product);
+    async update_Product(productDto: createProductDto, id: number) {
+        //await this.delete_Product(id);
+        return await this.productRepo.update(id, productDto);
+        // const product = this.productRepo.create(productDto);
+        // product.id = id;
+        // return this.productRepo.save(product);
     }
 
     async delete_Product(id: number): Promise<Product> {
@@ -53,7 +56,7 @@ export class AdminProductService {
 
     async get_One_type_By_Name(name: string): Promise<Type> {
         try {
-            return this.typeRepo.findOneOrFail(name);
+            return this.typeRepo.findOneOrFail({where: {type_name: name}});
         } catch (error) {
             //i dont know how to handle this
             throw error;
@@ -74,6 +77,4 @@ export class AdminProductService {
         const current_Product = await this.get_One_type_By_Name(name);
         return await this.typeRepo.remove(current_Product);
     }
-
-
 }
