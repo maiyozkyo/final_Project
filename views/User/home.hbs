@@ -218,7 +218,7 @@
               </a>
             </div>
             <div class="detail-box">
-              <h5>
+              <h5 class="product-name">
                 Drone
               </h5>
               <div class="product_info">
@@ -479,8 +479,10 @@
     $(function() {
       $('#quick-search').on('keyup', function() {
         const search_item = $(this).val().toLocaleLowerCase();
+        
         $('.box').filter(function() {
           $(this).parent().toggle($(this).children('.detail-box').children('h5.product-name').text().toLocaleLowerCase().indexOf(search_item) > -1);
+          console.log($(this).children('.detail-box').children('h5.product-name').text().toLocaleLowerCase().indexOf(search_item));
         })
       })
     })
