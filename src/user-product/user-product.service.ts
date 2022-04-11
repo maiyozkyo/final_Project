@@ -34,7 +34,7 @@ export class UserProductService {
 
     async get_One_Product_By_Id(id: number): Promise<Product> {
         try {
-            return this.productRepo.findOneOrFail(id);
+            return this.productRepo.findOneOrFail({where: {id: id}});
         } catch (error) {
             //i dont know how to handle this
             throw error;

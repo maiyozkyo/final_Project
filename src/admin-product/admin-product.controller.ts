@@ -1,5 +1,5 @@
 import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param} from '@nestjs/common';
-import { isNotEmpty } from 'class-validator';
+import { isEmpty, isNotEmpty } from 'class-validator';
 import { createProductDto } from 'src/DTO/createProduct.dto';
 import { createTypeDto } from 'src/DTO/createType.dto';
 
@@ -82,15 +82,16 @@ export class AdminProductController {
   }
 
   @Post('edit')
-  @Render('./Admin/edit-product')
   @Redirect('/admin/products')
   @UsePipes(ValidationPipe)
-  async postUpdatedProduct(@Body() body){
-    const categories = await this.adminProductService.get_All_Type().then();
-    const productDto:createProductDto = body;
-    const updated_Prod = await this.adminProductService.update_Product(productDto, body.id).then();
-    
-    return {prod: updated_Prod, types: categories};
+  async postUpdatedProduct(@Body() body) {
+    const productDto: createProductDto = body;
+    await this.adminProductService.update_Product(productDto, body.id);
+  }
+
+  @Get('edit/api/is-empty/:data')
+  async checkEmptyInput(@Param('data') data): Promise<boolean> {
+    return await !isEmpty(data);
   }
 
   @Get('/category')

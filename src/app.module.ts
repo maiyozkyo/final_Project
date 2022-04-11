@@ -23,7 +23,6 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 
-
 @Module({
   imports: [
     AdminHomeModule,

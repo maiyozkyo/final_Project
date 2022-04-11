@@ -13,41 +13,28 @@
                                 <tr>
                                     <th scope="col">&nbsp;</th>
                                     <th scope="col">USERNAME</th>
-                                    <th scope="col">REGISTER DATE</th>
-                                    <th scope="col">TOTAL PURCHASES</th>
-                                    <th scope="col">STATUS</th>
+                                    <th scope="col">FULL NAME</th>
+                                    <th scope="col">ADDRESS</th>
+                                    <th scope="col">EMAIL</th>
                                     <th scope="col">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#users}}
                                 <tr>
                                     <th scope="row"><input type="checkbox" /></th>
-                                    <td class="tm-product-name" onclick="location.href='./user-detail';" style="cursor: pointer;">Lorem</td> <!--TODO add name-->
-                                    <td>1/1/2022</td> <!--TODO add date-->
-                                    <td>550</td> <!--TODO add total-->
-                                    <td>Active</td> <!--TODO add status-->
+                                    <td class="tm-product-name" onclick="location.href='./manages/user-detail/{{user_id}}';" style="cursor: pointer;" name='user_id' value={{user_id}} type="submit">{{user_username}}</td> <!--TODO add name-->
+                                    <td>{{user_fullname}}</td> <!--TODO add date-->
+                                    <td>{{user_address}}</td> <!--TODO add total-->
+                                    <td>{{user_email}}</td> <!--TODO add status-->
                                     <td>
-                                        <a href="#" class="tm-product-delete-link">
+                                        <a href="./manages/del/{{user_id}}" class="tm-product-delete-link">
                                             <!--TODO add id-->
                                             <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                <!--TODO add {{#items}}-->
-                                <tr>
-                                    <th scope="row"><input type="checkbox" /></th>
-                                    <td class="tm-product-name" onclick="location.href='/user-detail';" style="cursor: pointer;">Lorem</td> <!--TODO add name-->
-                                    <td>1/1/2022</td> <!--TODO add date-->
-                                    <td>550</td> <!--TODO add total-->
-                                    <td>Active</td> <!--TODO add status-->
-                                    <td>
-                                        <a href="#" class="tm-product-delete-link">
-                                            <!--TODO add id-->
-                                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <!--TODO add {{/items}}-->
+                                {{/users}}
                             </tbody>
                         </table>
                     </div>
