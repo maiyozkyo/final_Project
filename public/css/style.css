@@ -5,6 +5,24 @@ body {
   overflow-x: hidden;
 }
 
+ul {
+  list-style: none;
+}
+.filtering {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+#quick-search{
+  border-radius: 5px;
+  flex-grow:  0.5;
+  padding: 0px 15px;
+}
+
+.filter-choice{
+  margin-left: 5px;
+}
 .description{
   font-size: small;
   color: #000000;

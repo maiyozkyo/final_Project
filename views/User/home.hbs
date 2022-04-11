@@ -119,13 +119,22 @@
 
   <section class="product_section layout_padding">
     <div class="container">
+      <div class="filtering">
+            
+        <input type="text" placeholder="Search Your Item Here" id="quick-search"> 
+        <div class="button-space">
+          <button class="btn btn-primary text-uppercase filter-choice a-z active">A-Z</button>
+          <button class="btn btn-primary text-uppercase filter-choice p-asc">Price Ascending</button>
+          <button class="btn btn-primary text-uppercase filter-choice p-desc">Price Descending</button>
+        </div>
+        </div>
       <div class="heading_container heading_center">
         <h2>
           Our Products
         </h2>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-lg-4">
+      <ul class="row items">
+        <li class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
               <img src="img/p1.png" alt="">
@@ -141,12 +150,12 @@
               </a>
             </div>
             <div class="detail-box">
-              <h5>
-                Product Name
+              <h5 class="product-name">
+                Camera
               </h5>
               <div class="product_info">
-                <h5>
-                  <span>$</span> 300
+                <h5 class="price">
+                  <span>$</span> 500
                 </h5>
                 <div class="star_container">
                   <i class="fa fa-star" aria-hidden="true"></i>
@@ -158,8 +167,8 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
+        </li>
+        <li class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
               <img src="img/p2.png" alt="">
@@ -175,12 +184,12 @@
               </a>
             </div>
             <div class="detail-box">
-              <h5>
+              <h5 class="product-name">
                 Product Name
               </h5>
               <div class="product_info">
-                <h5>
-                  <span>$</span> 300
+                <h5 class="price">
+                  <span>$</span> 150
                 </h5>
                 <div class="star_container">
                   <i class="fa fa-star" aria-hidden="true"></i>
@@ -192,8 +201,8 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
+        </li>
+        <li class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
               <img src="img/p3.png" alt="">
@@ -210,10 +219,10 @@
             </div>
             <div class="detail-box">
               <h5>
-                Product Name
+                Drone
               </h5>
               <div class="product_info">
-                <h5>
+                <h5 clas="price">
                   <span>$</span> 300
                 </h5>
                 <div class="star_container">
@@ -226,212 +235,8 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p4.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p5.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p6.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p7.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p8.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p9.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </li>
+      </ul>
       <div class="btn_box">
         <a href="./product/1" class="view_more-link">
           View More
@@ -668,6 +473,71 @@
   {{> footer}}
   
   {{> script}}
+
+  <script>
+    //search
+    $(function() {
+      $('#quick-search').on('keyup', function() {
+        const search_item = $(this).val().toLocaleLowerCase();
+        $('.box').filter(function() {
+          $(this).parent().toggle($(this).children('.detail-box').children('h5.product-name').text().toLocaleLowerCase().indexOf(search_item) > -1);
+        })
+      })
+    })
+
+
+    //sort a-z
+    $(function() {
+      $('.a-z').on('click', function() {
+        $(this).addClass('active')
+        $('.p-desc').removeClass('active')
+        $('.p-asc').removeClass('active')
+        let list = $('ul.items');
+        let alphabet = $('li.col-sm-6');
+        alphabet.sort(function(first, second) {
+          return $(first).text().toLowerCase().localeCompare($(second).text().toLowerCase());
+        })
+        $.each(alphabet, function(index, item) {
+          list.append(item)
+        })
+      })
+    })
+
+    //price asc
+    $(function() {
+      $('.p-asc').on('click', function() {
+        $(this).addClass('active')
+        $('.a-z').removeClass('active')
+        $('.p-desc').removeClass('active')
+        let list = $('ul.items');
+        let price = $('li.col-sm-6');
+        price.sort(function(first, second) {
+          return $(first).children().children().children().children('h5').text().replace('$', '').localeCompare($(second).children().children().children().children('h5').text().replace('$', ''));
+        })
+        $.each(price, function(index, item) {
+          list.append(item)
+        })
+      })
+    })
+
+
+    //price desc
+    $(function() {
+      $('.p-desc').on('click', function() {
+        $(this).addClass('active')
+        $('.a-z').removeClass('active')
+        $('.p-asc').removeClass('active')
+        let list = $('ul.items');
+        let price = $('li.col-sm-6');
+        price.sort(function(second, first) {
+          return $(first).children().children().children().children('h5').text().replace('$', '').localeCompare($(second).children().children().children().children('h5').text().replace('$', ''));
+        })
+        $.each(price, function(index, item) {
+          list.append(item)
+        })
+      })
+    })
+  </script>
 </body>
 
 </html>
