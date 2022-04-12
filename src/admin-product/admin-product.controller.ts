@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
-import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param} from '@nestjs/common';
-import { isNotEmpty } from 'class-validator';
-=======
 import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param, Res} from '@nestjs/common';
 import { isEmpty, isNotEmpty } from 'class-validator';
->>>>>>> Stashed changes
 import { createProductDto } from 'src/DTO/createProduct.dto';
 import { createTypeDto } from 'src/DTO/createType.dto';
 

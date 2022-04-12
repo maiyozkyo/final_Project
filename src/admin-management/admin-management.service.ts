@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { User } from 'src/Entities/User';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-<<<<<<< Updated upstream
-export class AdminManagementService {}
-=======
 export class AdminManagementService {
     constructor(
         @InjectRepository(User) private userRepo: Repository<User>,
@@ -32,4 +32,3 @@ export class AdminManagementService {
        await this.userRepo.delete(id);
     }
 }
->>>>>>> Stashed changes

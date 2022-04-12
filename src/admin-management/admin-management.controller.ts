@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-import { Controller, Get, Post, Render, Redirect } from '@nestjs/common';
-=======
 import { Controller, Get, Post, Render, Redirect, Param, Res } from '@nestjs/common';
->>>>>>> Stashed changes
 import { AdminManagementService } from './admin-management.service';
 
 @Controller('admin/manages')
@@ -10,12 +6,6 @@ export class AdminManagementController {
   constructor(private readonly adminManagementService: AdminManagementService) {}
   @Get()
   @Render('./Admin/manage-users')
-<<<<<<< Updated upstream
-  root(){ }
-
-  @Get('/view')
-  view(){}
-=======
   async root(){
     const page = 1;
     const user = await this.adminManagementService.getAllUsersByPage((page-1)*5,5).then();
@@ -58,5 +48,4 @@ export class AdminManagementController {
   async view(@Param('id') id){
     return await this.adminManagementService.deleteById(id);
   }
->>>>>>> Stashed changes
 }
