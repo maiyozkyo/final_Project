@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from 'src/Entities/User';
 import { InjectRepository } from '@nestjs/typeorm';
-const bcrypt = require('bcryptjs');
 
 @Injectable()
 export class AdminManagementService {
@@ -12,6 +11,21 @@ export class AdminManagementService {
 
     getAllUsers() : Promise<User[]> {
         return  this.userRepo.find();
+    }
+
+    async getAllUsersByPage(offset, limit) : Promise<User[]> {
+        const [result, total] = await this.userRepo.findAndCount({
+            take: limit, 
+            skip: offset
+        })
+        return result;
+    }
+
+    async getTotalUsers():Promise<number>{
+        const [result, total] = await this.userRepo.findAndCount({
+            
+        })
+        return total;
     }
 
     async deleteById(id:number){
