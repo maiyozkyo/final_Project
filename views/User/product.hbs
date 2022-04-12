@@ -30,6 +30,14 @@
           Our Products
         </h2>
       </div>
+      <div class="filtering" style="margin-top: 50px;">
+        <input type="text" placeholder="Search Your Item Here" id="quick-search"> 
+        <div class="button-space">
+          <button class="btn btn-primary text-uppercase filter-choice a-z active">A-Z</button>
+          <button class="btn btn-primary text-uppercase filter-choice p-asc">Price Ascending</button>
+          <button class="btn btn-primary text-uppercase filter-choice p-desc">Price Descending</button>
+        </div>
+      </div>
       <div class="row">
         {{#prods}}
         <div class="col-sm-6 col-lg-4">
@@ -48,11 +56,11 @@
               </a>
             </div>
             <div class="detail-box">
-              <h5 name={{prod_name}}>
+              <h5 name={{prod_name}} class="product-name">
                 {{product_name}}
               </h5>
               <div class="product_info">
-                <h5 name={{prod_price}}>
+                <h5 name={{prod_price}} class="price">
                   <span>$</span> {{price}}
                 </h5>
                 <div class="star_container">
@@ -86,6 +94,7 @@
 
   {{> footer}}
   {{> script}}
+  {{>forFilter}}
   <script>
     $('.star_container').append(`{{{prod_rating}}}`);
   </script>

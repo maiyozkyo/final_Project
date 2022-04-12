@@ -1,8 +1,18 @@
 <!DOCTYPE html>
-<html>
-    {{> header}}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     {{> link}}
-    <body>
+</head>
+
+<body>
+    <div class="cart">
+    {{> header}}
+
         <div class="row py-5 px-5">
             <div class="col-8 px-2">
                 <div>
@@ -15,7 +25,8 @@
                             <div class="row d-flex align-items-center">
                                 <div class="col-1">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                            value="option1">
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -58,8 +69,15 @@
                 </div>
             </div>
         </div>
-    </body>
-
     {{> footer}}
+    </div>
+    {{> script}}
+    <script>
+        const header_height = $('.header_section').height();
+        document.querySelector('.cart').style.top = `${header_height}px`;
+        const cart_height = $('.cart').height();
+        document.querySelector('.info_section').style.top = `${header_height + cart_height}px`;
+    </script>
+</body>
 
 </html>
