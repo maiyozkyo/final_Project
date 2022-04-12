@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param} from '@nestjs/common';
 import { isNotEmpty } from 'class-validator';
+=======
+import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param, Res} from '@nestjs/common';
+import { isEmpty, isNotEmpty } from 'class-validator';
+>>>>>>> Stashed changes
 import { createProductDto } from 'src/DTO/createProduct.dto';
 import { createTypeDto } from 'src/DTO/createType.dto';
 
@@ -14,12 +19,42 @@ export class AdminProductController {
 
   @Get()
   @Render('./Admin/products')
-  async root(@Query() query){
-    const prods = await this.adminProductService.get_All_Products().then();
+  async root( @Query() query){
+    const page = 1;
+    const prods = await this.adminProductService.get_All_Products_By_Page((page-1)*5,5).then();
     const categories = await this.adminProductService.get_All_Type().then(); 
-    // console.log(prods);
+    const total  = await this.adminProductService.getTotalProducts();
+    const totalPages = Math.ceil(total/5);
+    let nextPage = page + 1;
+    if(nextPage > totalPages){
+      nextPage = totalPages;
+    }
+    let prevPage = page - 1;
+    if(prevPage < 1){
+      prevPage = 1;
+    }
+    return {types: categories, products: prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
+  }
 
-    return {products: prods, types: categories};
+  @Get(':page')
+  async adminProductPaging(@Param('page') page, @Res() res){
+    const categories = await this.adminProductService.get_All_Type().then(); 
+    if(!page || isNaN(page)) page = 1;
+    else{
+      page = parseInt(page);
+    }
+    const products = await this.adminProductService.get_All_Products_By_Page((page-1)*5,5).then();
+    const total  = await this.adminProductService.getTotalProducts();
+    const totalPages = Math.ceil(total/5);
+    let nextPage = page + 1;
+    if(nextPage > totalPages){
+      nextPage = totalPages;
+    }
+    let prevPage = page - 1;
+    if(prevPage < 1){
+      prevPage = 1;
+    }
+    return res.json(products);
   }
 
   @Post()
@@ -36,7 +71,7 @@ export class AdminProductController {
     return {products: prods, types: categories};
   }
 
-  @Get('add')
+  @Get('/add')
   @Render('./Admin/add-product')
   @UsePipes(ValidationPipe)
   async render_Add_Page(){

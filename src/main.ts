@@ -17,6 +17,9 @@ async function bootstrap() {
   hbs.registerHelper('hasPagination', pagination.hasPagination);
   hbs.registerHelper('previous', pagination.previous);
   hbs.registerHelper('next', pagination.next);
+  hbs.registerHelper('toJSON', function(obj) {
+    return JSON.stringify(obj, null, 3);
+});
   app.setViewEngine('hbs');
   
   app.use(
