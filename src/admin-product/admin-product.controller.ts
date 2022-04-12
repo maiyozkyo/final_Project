@@ -89,10 +89,19 @@ export class AdminProductController {
     await this.adminProductService.update_Product(productDto, body.id);
   }
 
-  @Get('edit/api/is-empty/:data')
-  async checkEmptyInput(@Param('data') data): Promise<boolean> {
-    return await !isEmpty(data);
-  }
+  // @Get('edit/api/is-empty/:data')
+  // async checkEmptyInput(@Param('data') data): Promise<boolean> {
+  //   return await !isEmpty(data);
+  // @Render('./Admin/edit-product')
+  // @Redirect('/admin/products')
+  // @UsePipes(ValidationPipe)
+  // async postUpdatedProduct(@Body() body){
+  //   const categories = await this.adminProductService.get_All_Type().then();
+  //   const productDto:createProductDto = body;
+  //   const updated_Prod = await this.adminProductService.update_Product(productDto, body.id).then();
+    
+  //   return {prod: updated_Prod, types: categories};
+  // }
 
   @Get('/category')
   @Render('./Admin/products')

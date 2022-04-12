@@ -107,30 +107,6 @@
     integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    $('#name').on('input', function(){
-        if(this.value == ""){
-          $(this).addClass('is-invalid');
-        }
-        else{
-          $(this).removeClass('is-invalid');
-        }
-      });
-    
-    $('#price, #quantity').on('input', function(){
-        if(this.value == "" || isNaN(this.value)){
-          $(this).addClass('is-invalid');
-        }
-        else{
-          $(this).removeClass('is-invalid');
-        }
-      });
-
-    $('#category').on('change',function(){
-      var errorDiv = document.getElementById("alert");
-      if($('#category').val() == 'selected'){
-          errorDiv.style.display = "block";
-      }else{errorDiv.style.display = "none";}
-    });
   </script>
 </body>
 

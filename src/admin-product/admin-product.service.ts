@@ -33,12 +33,11 @@ export class AdminProductService {
         return this.productRepo.save(new_Product);
     }
 
-    async update_Product(productDto: createProductDto, id: number) {
-        //await this.delete_Product(id);
-        return await this.productRepo.update(id, productDto);
-        // const product = this.productRepo.create(productDto);
-        // product.id = id;
-        // return this.productRepo.save(product);
+    async update_Product(productDto: createProductDto, id: number): Promise<Product> {
+        await this.delete_Product(id);
+        const product = await this.create_Product(productDto);
+        product.id = id;
+        return this.productRepo.save(product);
     }
 
     async delete_Product(id: number): Promise<Product> {
