@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards, Render } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards, Render, Redirect } from '@nestjs/common';
 import { GoogleLoginService } from './google-login.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -10,8 +10,13 @@ export class GoogleLoginController {
   async signInWithGoogle(@Req() req) {}
 
   @Get('redirect')
+  @Redirect('/home')
   @UseGuards(AuthGuard('google'))
   async signInWithGoogleRedirect(@Req() req) {
-    return this.googleLoginService.signInWithGoogle(req);
+    const user = this.googleLoginService.signInWithGoogle(req).then(token => { return token});
+    user.then(function(result){
+      console.log(result);
+    })
+    
   }
 }

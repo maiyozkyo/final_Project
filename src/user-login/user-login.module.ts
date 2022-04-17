@@ -7,6 +7,7 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import entities from 'src/Entities/All_Entities';
+import { SessionSerializer } from './session.serializer';
 
 @Module({
   imports: [
@@ -17,9 +18,10 @@ import entities from 'src/Entities/All_Entities';
               expiresIn: '60 seconds',
             },
       }),
-      TypeOrmModule.forFeature(entities)
+      TypeOrmModule.forFeature(entities),
+      PassportModule.register({session: true}),
   ],
   controllers: [UserLoginController],
-  providers: [UserLoginService,LocalStrategy, JwtStrategy],
+  providers: [UserLoginService,LocalStrategy, JwtStrategy, SessionSerializer],
 })
 export class UserLoginModule {}

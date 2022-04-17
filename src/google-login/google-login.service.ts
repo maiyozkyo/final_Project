@@ -41,7 +41,6 @@ export class GoogleLoginService {
     return {
       access_token: this.jwtService.sign(
         {
-
           email: user.user_email,
         },
         {
@@ -71,7 +70,7 @@ export class GoogleLoginService {
     try {
       const newUser = new User();
       newUser.user_username = data.user.email;
-      newUser.user_fullname = data.user.lastName + data.user.firstName;
+      newUser.user_fullname = data.user.lastName + " " + data.user.firstName;
       newUser.user_email = data.user.email;
       newUser.user_id = data.user.id;
 

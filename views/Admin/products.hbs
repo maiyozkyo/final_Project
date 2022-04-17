@@ -51,24 +51,24 @@
 
             <ul class="pagination justify-content-center col-lg" id="page">
 
-              <li class="page-item">
-                <a class="page-link" id = "pagePrev">Previous</a>
+              <li class="page-item prevBtn" id="pagePrev">
+                <a class="page-link">Previous</a>
               </li>
               {{#pages}}
-              <li class="page-item "><a class="page-link currPage" value={{.}}>{{.}}</a></li>
+              <li class="page-item"><a class="page-link pageNumber" value={{.}}> {{.}}</a></li>
               {{/pages}}
-              <li>
-                <a class="page-link"  id = "pageNext">Next</a>
+              <li class="page-item nextBtn" id="pageNext">
+                <a class="page-link">Next</a>
               </li>
             </ul>
-       
+          
           </nav>
           <!-- table container -->
           <a href=" /admin/products/add" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
-                <form action="" id="delete_form" method="post">
-                  <button class="btn btn-primary btn-block text-uppercase" id="del-btn"> Delete selected products
-                  </button>
-                </form>
+          <form action="" id="delete_form" method="post">
+            <button class="btn btn-primary btn-block text-uppercase" id="del-btn"> Delete selected products
+            </button>
+          </form>
         </div>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
@@ -107,10 +107,11 @@
     $('.fa-shopping-cart').parent().addClass('active');
 
     $(function () {
-      $('.page-link').on('click', function () {
+      $('.pageNumber').on('click', function () {
+        $('.pageNumber').removeClass('active')
+        $(this).addClass('active');
         const page = $(this).attr('value');
-        console.log("currpage" + page);
-
+        console.log("currpage: " + page);
         $.getJSON('/admin/products/' + page, function (data) {
           $('#productBody').empty();
           var i;
@@ -130,9 +131,12 @@
       })
 
       $('#pageNext').on('click', function () {
-        var page = $('.currPage').attr('value');
-        page = parseInt(page) + 1;
-        console.log("next page"+ page);
+        var page = parseInt($('.pageNumber.active').attr('value'));
+        page++;
+        
+        $('.pageNumber.active').removeClass('active')
+        $('.pageNumber.active').text(page).addClass('active')
+        console.log("next page" + page);
         $.getJSON('/admin/products/' + page, function (data) {
           $('#productBody').empty();
           var i;
@@ -146,8 +150,6 @@
 
             $('#productBody').append(productRow)
           }
-          JSON.stringify(data)
-          console.log(data);
         })
       })
 

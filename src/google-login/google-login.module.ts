@@ -8,7 +8,10 @@ import { JwtService, JwtModule } from "@nestjs/jwt";
 import {ConfigModule, ConfigService} from '@nestjs/config'
 import { JwtStrategy } from 'src/admin-login/jwt.strategy';
 @Module({
-  imports: [TypeOrmModule.forFeature(entities),  JwtModule.register({})],
+  imports: [TypeOrmModule.forFeature(entities),  JwtModule.register({
+    secret: 'secretKey',
+    signOptions: {expiresIn: '60s'},
+  })],
   controllers: [GoogleLoginController],
   providers: [GoogleLoginService, GoogleStrategy, JwtStrategy]
 })
