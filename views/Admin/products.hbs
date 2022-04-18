@@ -91,7 +91,7 @@
             </table>
           </div>
           <!-- table container -->
-          <form action="/admin/products/category/" method="get">
+          <form action="/Admin/products/category/" method="get">
             <input style="width: 100%" type="text" placeholder="Category Name" id="new-Category" name="type_name">
             <button class="btn btn-primary btn-block text-uppercase mb-3">
               Add new category
@@ -112,7 +112,7 @@
         $(this).addClass('active');
         const page = $(this).attr('value');
         console.log("currpage: " + page);
-        $.getJSON('/admin/products/' + page, function (data) {
+        $.getJSON('/admin/products/page/' + page, function (data) {
           $('#productBody').empty();
           var i;
           for (i = 0; i < data.length; ++i) {
@@ -141,7 +141,7 @@
         $('.pageNumber.active').removeClass('active')
         $('.pageNumber.active').text(page).addClass('active')
         console.log("next page" + page);
-        $.getJSON('/admin/products/' + page, function (data) {
+        $.getJSON('/admin/products/page' + page, function (data) {
           $('#productBody').empty();
           var i;
           for (i = 0; i < data.length; ++i) {
