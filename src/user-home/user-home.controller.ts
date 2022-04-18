@@ -6,7 +6,10 @@ export class UserHomeController {
   constructor(private readonly userHomeService: UserHomeService) {}
   @Get()
   @Render("./User/home")
-  root(){}
+  async root(){
+    const products = await this.userHomeService.get_All_Products(0,9).then();
+    return {products,};
+  }
 }
 
 

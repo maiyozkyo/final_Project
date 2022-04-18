@@ -105,7 +105,7 @@
   {{> scriptAdmin}}
   <script>
     $('.fa-shopping-cart').parent().addClass('active');
-
+    
     $(function () {
       $('.pageNumber').on('click', function () {
         $('.pageNumber').removeClass('active')
@@ -131,9 +131,13 @@
       })
 
       $('#pageNext').on('click', function () {
+        const totalPages = $('.pageNumber').get().length;
         var page = parseInt($('.pageNumber.active').attr('value'));
+        console.log(page)
         page++;
-        
+        if(page >= totalPages){
+          page = totalPages;
+        }
         $('.pageNumber.active').removeClass('active')
         $('.pageNumber.active').text(page).addClass('active')
         console.log("next page" + page);
