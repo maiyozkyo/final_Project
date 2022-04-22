@@ -32,25 +32,25 @@
                             </div>
                             <div class="tm-avatar-title d-flex justify-content-center">Lorem</div>
                         </div>
-
+                        {{#user}}
                         <div class="col-lg-6">
                             <div class="tm-block-info-container flex-column h-100 py-4">
                                 <hr class="separator">
                                 <div class="row px-3">
                                     <div class="col title">Customer Name</div>
-                                    <div class="col text-dark">Lorem</div>
+                                    <div class="col text-dark">{{fullname}}</div>
                                     <!--TODO{{name}}-->
                                 </div>
                                 <hr class="separator">
                                 <div class="row px-3">
                                     <div class="col title">Email</div>
-                                    <div class="col text-dark">abc@gmail.com</div>
+                                    <div class="col text-dark">{{email}}</div>
                                     <!--TODO{{email}}-->
                                 </div>
                                 <hr class="separator">
                                 <div class="row px-3">
                                     <div class="col title">Tel</div>
-                                    <div class="col text-dark">1234567890</div>
+                                    <div class="col text-dark">{{phone}}</div>
                                     <!--TODO{{tel}}-->
                                 </div>
                                 <div class="row justify-content-center py-4">
@@ -60,6 +60,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{/user}}
                     </div>
 
                 </div>

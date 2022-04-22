@@ -31,7 +31,7 @@ export class AdminProductController {
     return {types: categories, products: prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
   }
 
-  @Get(':page')
+  @Get('page/:page')
   async adminProductPaging(@Param('page') page, @Res() res){
     const categories = await this.adminProductService.get_All_Type().then(); 
     if(!page || isNaN(page)) page = 1;
@@ -140,18 +140,30 @@ export class AdminProductController {
   @UsePipes(ValidationPipe)
   async addCategory(@Query() new_Type:createTypeDto){
     const categories = await this.adminProductService.get_All_Type().then();
-    const prods = await this.adminProductService.get_All_Products().then();
-
+    //paging
+    const page = 1;
+    const prods = await this.adminProductService.get_All_Products_By_Page((page-1)*5,5).then();
+    const total  = await this.adminProductService.getTotalProducts();
+    const totalPages = Math.ceil(total/5);
+    let nextPage = page + 1;
+    if(nextPage > totalPages){
+      nextPage = totalPages;
+    }
+    let prevPage = page - 1;
+    if(prevPage < 1){
+      prevPage = 1;
+    }
     if (new_Type.type_name){
       await this.adminProductService.create_Type(new_Type);
       const categories = await this.adminProductService.get_All_Type().then();
-      return {products: prods, types: categories};
+      return {products: prods, types: categories, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
     }
-    return {products: prods, types: categories};
+
+    return {products: prods, types: categories, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
 
   }
 
-  @Get('category/:type_name')
+  @Get('/category/:type_name')
   @Render('./Admin/products')
   @Redirect('/admin/products')
   async DeleteType(@Param() param){

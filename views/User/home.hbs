@@ -125,8 +125,9 @@
           Our Products
         </h2>
       </div>
-      <ul class="row items">
-        <li class="col-sm-6 col-lg-4">
+      <div class="row">
+        {{#products}}
+        <div class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
               <img src="img/p1.png" alt="">
@@ -135,19 +136,19 @@
                   Add To Cart
                 </span>
               </a>
-              <a href="/detail" class="detail_btn">
+              <a href="product/detail/{{id}}" class="detail_btn">
                 <span>
                   Detail
                 </span>
               </a>
             </div>
             <div class="detail-box">
-              <h5 class="product-name">
-                Camera
+              <h5>
+                {{product_name}}
               </h5>
               <div class="product_info">
-                <h5 class="price">
-                  <span>$</span> 500
+                <h5>
+                  <span>$</span> {{price}}
                 </h5>
                 <div class="star_container">
                   <i class="fa fa-star" aria-hidden="true"></i>
@@ -159,82 +160,14 @@
               </div>
             </div>
           </div>
-        </li>
-        <li class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p2.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5 class="product-name">
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5 class="price">
-                  <span>$</span> 150
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="img/p3.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-              <a href="/detail" class="detail_btn">
-                <span>
-                  Detail
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5 class="product-name">
-                Drone
-              </h5>
-              <div class="product_info">
-                <h5 clas="price">
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div class="btn_box">
+        </div>
+        {{/products}}
+    </div>
+    <div class="btn_box justify-content-center">
         <a href="./product/1" class="view_more-link">
           View More
         </a>
       </div>
-    </div>
   </section>
 
   <!-- end product section -->
