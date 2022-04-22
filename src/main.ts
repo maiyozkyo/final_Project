@@ -28,6 +28,11 @@ async function bootstrap() {
   });
   app.setViewEngine('hbs');
 
+  app.use(function (req, res, next) {
+    res.locals.user = req.user;
+    next();
+  });
+  
   app.use(
     session({
       secret: 'keyboard cat',

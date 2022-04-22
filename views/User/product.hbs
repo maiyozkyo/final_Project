@@ -30,7 +30,7 @@
           Our Products
         </h2>
       </div>
-      <div class="row">
+      <div class="row productList">
         {{#prods}}
         <div class="col-sm-6 col-lg-4">
           <div class="box">
@@ -67,14 +67,17 @@
       <nav aria-label="Page navigation example">
         
         <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="{{prevPage}}"" tabindex="-1">Previous</a>
-          </li>
-          {{#pages}}
-             <li class="page-item"><a class="page-link" href="./{{.}}">{{.}}</a></li>
-          {{/pages}}
           <li>
-            <a class="page-link" href="{{nextPage}}"">Next</a>
+            <a class="page-link" id = "prev" >Previous</a>
+          </li>
+          {{#each pages}}
+            {{#if @first}} <li class="page-item"><a class="page-link pageNumber currPage" value={{.}}>{{.}}</a></li> 
+            {{else}}
+             <li class="page-item"><a class="page-link pageNumber" value={{.}}>{{.}}</a></li>
+             {{/if}}
+          {{/each}}
+          <li>
+            <a class="page-link" id = "next" >Next</a>
           </li>
         </ul>
        
@@ -88,6 +91,37 @@
   {{> script}}
   <script>
     $('.star_container').append(`{{{prod_rating}}}`);
+    $(function () {
+      $('.page-link').on('click', function () {
+        $('.page-link').removeClass('currPage')
+        $(this).addClass('currPage');
+        var page = parseInt($('.currPage').attr('value'));
+        if($(this).attr('id') === 'prev'){
+          console.log("prev")
+          page--;
+        }
+        if($(this).attr('id') === 'next'){
+          console.log("next")
+          page++;
+        }
+        console.log(page)
+        $.getJSON('/product/page/' + page, function (data) {
+          console.log(data)
+          $('.productList').empty()
+           var i;
+          for (i = 0; i < data.length; ++i) {
+          var htmlString = '<div class="col-sm-6 col-lg-4">' + 
+            '<div class="box">' + '<div class="img-box">' + '<img src=' + data[i].prod_img  + ' alt="" name={{product_name}}>'
+            + '<a href="detail/'+ data[i].id + '" class="add_cart_btn" > <span> Add To Cart </span> </a>' 
+            + '<a href="detail/'+ data[i].id + '" class="detail_btn" > <span> Detail </span> </a> </div>'
+            + '<div class="detail-box">' + '<h5 name={{prod_name}}>' + data[i].product_name + '</h5>'
+            + '<div class="product_info">' + '<h5 name={{prod_price}}>' + '<span>$</span>' + data[i].price + '</h5>'
+            + '</div> </div> </div> </div>'
+          $('.productList').append(htmlString);
+          }
+        })
+      })
+    })
   </script>
 </body>
 
