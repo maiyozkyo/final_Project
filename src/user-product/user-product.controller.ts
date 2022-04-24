@@ -13,7 +13,7 @@ export class UserProductController {
 
   @Get()
   @Render('./User/product')
-  async productList(){
+  async productList(@Request() req){
     let page = 1;
     const prods = await this.userService.get_All_Products((page-1)*9,9).then();
     const total  = await this.userService.getTotalProducts();
@@ -26,12 +26,12 @@ export class UserProductController {
     if(prevPage < 1){
       prevPage = 1;
     }
-    return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
+    return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage, user: req.user};
   }
 
   @Get('/:page')
   @Render('./User/product')
-  async root(@Param() param){
+  async root(@Param() param, @Request() req){
     let page = param.page;
     if(!page || isNaN(page)) page = 1;
     else{
@@ -49,7 +49,7 @@ export class UserProductController {
     if(prevPage < 1){
       prevPage = 1;
     }
-    return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage,};
+    return {prods, totalPages, pages: Array.from(Array(totalPages).keys()).map(i=>i+1),nextPage, prevPage, user: req.user};
   }
 
   @Get('page/:page')
