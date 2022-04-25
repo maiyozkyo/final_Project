@@ -33,13 +33,19 @@
                     <div class="row nav-item">
                         <div class="w-100 px-3">
                             <p class="float-left">Tạm tính</p>
-                            <p class="float-right" style="color:#f2b01e;">price</p>
+                            <p class="float-right temp_total" style="color:#f2b01e;"></p>
+                        </div>
+                    </div>
+                    <div class="row nav-item">
+                        <div class="w-100 px-3">
+                            <p class="float-left">Thuế</p>
+                            <p class="float-right tax" style="color:#f2b01e;"></p>
                         </div>
                     </div>
                     <div class="row nav-item">
                         <div class="px-3 w-100">
                             <p class="float-left">Thành tiền</p>
-                            <p class="float-right" style="color: #f2b01e;">price</p>
+                            <p class="float-right total" style="color: #f2b01e;"></p>
                         </div>
                     </div>
                     <div method="post" href="." class="btn light" type="submit" style="font-size: x-large;">Thanh toán</div>
@@ -56,24 +62,15 @@
         document.querySelector('.info_section').style.top = `${header_height + cart_height}px`;
     </script>
 
-    <script>
-        $('.btn-desc').on('click', function() {
-            if ($('.quantity-area').val() > 0)
-                $('.quantity-area').val($('.quantity-area').val() - 1);
-        })
-
-        $('.btn-inc').on('click', function() {
-            
-            $('.quantity-area').val(+$('.quantity-area').val() + 1);
-        })
-    </script>
+    
 
     <script>
+        let listItems = ``
         const items = {...localStorage}
-        listItems = ``
         for (key in items) {
             quantity = items[key].split(' ')[0]
             img = items[key].split(' ')[1]
+            price = items[key].split(' ')[2]
             listItems += 
             `
                 <li class="list-group-item" id=${key}>                            
@@ -92,21 +89,76 @@
                         </div>
                         <div class="col-3">
                             <div style="display: inline-flex;">
-                                <button class="btn btn-desc">-</button>
-                                <input class="quantity-area"  style="text-align:center" min="1" size="1" maxlength="100", step="1" value=${quantity}>
-                                <button class="btn btn-inc">+</button>
+                                <button class="btn btn-desc" value=${key}>-</button>
+                                <input disabledc2 class="quantity-${key}"  style="text-align:center" min="1" size="1" maxlength="100", step="1" value=${quantity}>
+                                <button class="btn btn-inc" value=${key}>+</button>
                             </div>
                         </div>
-                        <div class="col-2 price-column" value="{{price}}">
-                            {{price}}
+                        <div class="col-2 price-column" value="${price}">
+                            ${price}
                         </div>
                     </div>
                 </li>
             `
         }
         document.querySelector('.list-group').innerHTML = listItems
+        
+        const updateTotal = () => {
+            const items = {...localStorage}
+            total = 0
+            for (key in items) {
+                quantity = items[key].split(' ')[0]
+                img = items[key].split(' ')[1]
+                price = items[key].split(' ')[2]
+                total += quantity * price
+                 
+            }
+            $('.temp_total').html(total)
+            $('.tax').html(total*0.1)
+            $('.total').html(total*1.1)
+        }
+        updateTotal()
+        
+    </script>
+    <script>
+        const updateCart = () => {
+            const cart = { ...localStorage };
+            let total = 0;
+            for (item in cart) {
+                total += +cart[item].split(' ')[0]
+            }
+            document.querySelector('.fa-shopping-cart').textContent = `\t` + total;
+        }
+    </script>
+    <script>
+        $('.btn-desc').on('click', function() {
+            const key = $(this).attr('value')
+            let parent = $(this).parent()
+            let quantity_element = parent.children(`.quantity-${key}`)
+            let new_quantity = +quantity_element.val() - 1;
+            
+            if (localStorage.getItem(key).split(' ')[0] > 0) {
+                localStorage.setItem(key, new_quantity + ' ' + localStorage.getItem(key).split(' ')[1] + ' ' + localStorage.getItem(key).split(' ')[2])
+                quantity_element.attr('value', new_quantity)
+            }
+            updateCart()          
+            updateTotal()
+        })
+
+        $('.btn-inc').on('click', function() {           
+            const key = $(this).attr('value')
+            let parent = $(this).parent()
+            let quantity_element = parent.children(`.quantity-${key}`)
+            let new_quantity = +quantity_element.val() + 1;                               
+            localStorage.setItem(key, new_quantity + ' ' + localStorage.getItem(key).split(' ')[1] + ' ' + localStorage.getItem(key).split(' ')[2])
+            quantity_element.attr('value', new_quantity)
+            updateCart()    
+            updateTotal()
+
+        })
     </script>
     {{> updateCart}}
+    
 </body>
 
 </html>

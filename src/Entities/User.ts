@@ -1,4 +1,5 @@
 import { Column, Entity, OneToOne, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, JoinColumn, OneToMany } from "typeorm";
+import { Cart } from "./Cart";
 
 
 @Entity()
@@ -40,4 +41,7 @@ export class User{
         default:''
     })
     user_tel: string;
+
+    
+    @ManyToOne(type => Cart, cart => cart.users) cart: Cart;
 }

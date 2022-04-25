@@ -10,7 +10,7 @@ export class UserCartController {
   @Render("./User/cart")
   root(@Request() req){
     let items = req.params;
-    
+    console.log(req.session['passport'])
     return {user: req.user, cartItems: items}
   }
 }
