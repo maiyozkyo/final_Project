@@ -2,7 +2,7 @@ import { Controller, Get, Req, UseGuards, Render, Redirect, Request,Res } from '
 import { GoogleLoginService } from './google-login.service';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from 'src/admin-login/jwt-auth.guard';
-import jwtDecode from 'jwt-decode';
+
 @Controller('google')
 export class GoogleLoginController {
   constructor(private readonly googleLoginService: GoogleLoginService) {}

@@ -30,27 +30,27 @@
                             <div class="tm-circular-avatar-container">
                                 <img src="/img/avatar.png" />
                             </div>
-                            <div class="tm-avatar-title d-flex justify-content-center">Lorem</div>
+                            <div class="tm-avatar-title d-flex justify-content-center">{{user_fullname}}</div>
                         </div>
-                        {{#user}}
+                        
                         <div class="col-lg-6">
                             <div class="tm-block-info-container flex-column h-100 py-4">
                                 <hr class="separator">
                                 <div class="row px-3">
                                     <div class="col title">Customer Name</div>
-                                    <div class="col text-dark">{{fullname}}</div>
+                                    <div class="col text-dark">{{user_fullname}}</div>
                                     <!--TODO{{name}}-->
                                 </div>
                                 <hr class="separator">
                                 <div class="row px-3">
                                     <div class="col title">Email</div>
-                                    <div class="col text-dark">{{email}}</div>
+                                    <div class="col text-dark">{{user_email}}</div>
                                     <!--TODO{{email}}-->
                                 </div>
                                 <hr class="separator">
                                 <div class="row px-3">
                                     <div class="col title">Tel</div>
-                                    <div class="col text-dark">{{phone}}</div>
+                                    <div class="col text-dark">{{user_tel}}</div>
                                     <!--TODO{{tel}}-->
                                 </div>
                                 <div class="row justify-content-center py-4">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{/user}}
+                        
                     </div>
 
                 </div>
