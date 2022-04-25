@@ -35,12 +35,12 @@
         <div class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src={{prod_img}} alt="" name={{product_name}}>
-              <a href="detail/{{id}}" class="add_cart_btn">
+              <img id={{id}} src={{prod_img}} alt="" name={{product_name}}>
+              <button class="add_cart_btn" value={{id}}>
                 <span>
                   Add To Cart
                 </span>
-              </a>
+              </button>
               <a href="detail/{{id}}" class="detail_btn">
                 <span>
                   Detail
@@ -65,22 +65,22 @@
         {{/prods}}
       </div>
       <nav aria-label="Page navigation example">
-        
+
         <ul class="pagination justify-content-center">
           <li>
-            <a class="page-link" id = "prev" >Previous</a>
+            <a class="page-link" id="prev">Previous</a>
           </li>
           {{#each pages}}
-            {{#if @first}} <li class="page-item"><a class="page-link pageNumber currPage" value={{.}}>{{.}}</a></li> 
-            {{else}}
-             <li class="page-item"><a class="page-link pageNumber" value={{.}}>{{.}}</a></li>
-             {{/if}}
+          {{#if @first}} <li class="page-item"><a class="page-link pageNumber currPage" value={{.}}>{{.}}</a></li>
+          {{else}}
+          <li class="page-item"><a class="page-link pageNumber" value={{.}}>{{.}}</a></li>
+          {{/if}}
           {{/each}}
           <li>
-            <a class="page-link" id = "next" >Next</a>
+            <a class="page-link" id="next">Next</a>
           </li>
         </ul>
-       
+
       </nav>
     </div>
   </section>
@@ -97,11 +97,11 @@
         $('.page-link').removeClass('currPage')
         $(this).addClass('currPage');
         var page = parseInt($('.currPage').attr('value'));
-        if($(this).attr('id') === 'prev'){
+        if ($(this).attr('id') === 'prev') {
           console.log("prev")
           page--;
         }
-        if($(this).attr('id') === 'next'){
+        if ($(this).attr('id') === 'next') {
           console.log("next")
           page++;
         }
@@ -109,21 +109,44 @@
         $.getJSON('/product/page/' + page, function (data) {
           console.log(data)
           $('.productList').empty()
-           var i;
+          var i;
           for (i = 0; i < data.length; ++i) {
-          var htmlString = '<div class="col-sm-6 col-lg-4">' + 
-            '<div class="box">' + '<div class="img-box">' + '<img src=' + data[i].prod_img  + ' alt="" name={{product_name}}>'
-            + '<a href="detail/'+ data[i].id + '" class="add_cart_btn" > <span> Add To Cart </span> </a>' 
-            + '<a href="detail/'+ data[i].id + '" class="detail_btn" > <span> Detail </span> </a> </div>'
-            + '<div class="detail-box">' + '<h5 name={{prod_name}}>' + data[i].product_name + '</h5>'
-            + '<div class="product_info">' + '<h5 name={{prod_price}}>' + '<span>$</span>' + data[i].price + '</h5>'
-            + '</div> </div> </div> </div>'
-          $('.productList').append(htmlString);
+            var htmlString = '<div class="col-sm-6 col-lg-4">' +
+              '<div class="box">' + '<div class="img-box">' + '<img src=' + data[i].prod_img + ' alt="" name={{product_name}}>'
+              + `<button class="add_cart_btn" value=${date[i].id}>`
+              + '<a href="detail/' + data[i].id + '" class="detail_btn" > <span> Detail </span> </a> </div>'
+              + '<div class="detail-box">' + '<h5 name={{prod_name}}>' + data[i].product_name + '</h5>'
+              + '<div class="product_info">' + '<h5 name={{prod_price}}>' + '<span>$</span>' + data[i].price + '</h5>'
+              + '</div> </div> </div> </div>'
+            $('.productList').append(htmlString);
           }
         })
       })
     })
   </script>
+
+  <script>
+    //add the cart
+    $('.add_cart_btn').on('click', function() {
+      let key = $(this).val()
+      let value = $(`#${key}`).attr('src');
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, '1 ' + value)
+      }
+      else {
+        localStorage.setItem(key, +localStorage.getItem(key).split(' ')[0] + 1 + ' ' + value)
+        
+      }
+      const cart = { ...localStorage };
+      let total = 0;
+      for (item in cart) {
+        total += +cart[item].split(' ')[0]
+      }
+      document.querySelector('.fa-shopping-cart').textContent = `\t` + total;
+    })
+  </script>
+  {{> updateCart}}
+
 </body>
 
 </html>

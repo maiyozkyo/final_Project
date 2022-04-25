@@ -1,12 +1,12 @@
-import { Controller, Get, Render, Request, Post, UseGuards, Body, Redirect, Res, Req } from '@nestjs/common';
+import { Controller, Get, Render, Request, Post, UseGuards, Body, Redirect, Res, Req, UseFilters} from '@nestjs/common';
 import { UserLoginService } from './user-login.service';
-import { LocalAuthGuard } from './local-auth.guard';
 import { JwtService } from '@nestjs/jwt';
-import { createUserDto } from 'src/DTO/createUser.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
-import { LoginGuard } from './login.guard';
+import { LoginGuard } from '../Guards/login.guard';
+import { AuthExceptionFilter } from '../Guards/auth-exception.filter';
+
 @Controller('/login')
+@UseFilters(AuthExceptionFilter)
 export class UserLoginController {
   constructor(
     private readonly userLoginService: UserLoginService,
