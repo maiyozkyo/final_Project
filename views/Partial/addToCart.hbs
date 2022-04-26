@@ -1,0 +1,21 @@
+<script>
+    $('.add_cart_btn').on('click', function() {
+      let key = $(this).val()
+      let img = $(`#${key}`).attr('src');
+      let price = $(`#price_${key}`).attr('value')
+      
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, '1 ' + img + ' ' + price);
+      }
+      else {
+        localStorage.setItem(key, +localStorage.getItem(key).split(' ')[0] + 1 + ' ' + img + ' ' + price)
+        
+      }
+      const cart = { ...localStorage };
+      let total_items = 0;
+      for (item in cart) {
+        total_items += +cart[item].split(' ')[0]
+      }
+      document.querySelector('.fa-shopping-cart').textContent = `\t` + total_items;
+    })
+</script>

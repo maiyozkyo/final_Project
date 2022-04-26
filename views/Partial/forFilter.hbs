@@ -55,9 +55,11 @@
         let list = $('ul.items');
         let price = $('li.col-sm-6');
         price.sort(function(second, first) {
+          console.log(second, first)
           return $(first).children().children().children().children('h5').text().replace('$', '').localeCompare($(second).children().children().children().children('h5').text().replace('$', ''));
         })
         $.each(price, function(index, item) {
+
           list.append(item)
         })
       })
