@@ -22,8 +22,6 @@
                 <div class="row container-fluid custom_nav-container px-3 py-3">
                     <ul class="list-group" style="width: 100%;">
                         
-                        
-                        
                     </ul>
                 </div>
             </div>
@@ -62,7 +60,20 @@
         document.querySelector('.info_section').style.top = `${header_height + cart_height}px`;
     </script>
 
-    
+    <script>
+        const user_items = `{{cartItems}}`
+        let products = ``
+        if (user_items)
+            products = user_items.split(' ')
+        console.log(products)
+        for (product in products) {
+            let key = products[product].split('_')[0]
+            let value = products[product].split('_')[1]
+            console.log(key, value)
+            localStorage.setItem(key, value)
+        }
+
+    </script>
 
     <script>
         let listItems = ``
@@ -94,7 +105,7 @@
                                 <button class="btn btn-inc" value=${key}>+</button>
                             </div>
                         </div>
-                        <div class="col-2 price-column" value="${price}">
+                        <div class="col-2 price-column-${key}" value="${price}">
                             ${price}
                         </div>
                     </div>
@@ -135,12 +146,18 @@
             const key = $(this).attr('value')
             let parent = $(this).parent()
             let quantity_element = parent.children(`.quantity-${key}`)
+            let price_element = $(`.price-column-${key}`)
+
+
             let new_quantity = +quantity_element.val() - 1;
             
             if (localStorage.getItem(key).split(' ')[0] > 0) {
                 localStorage.setItem(key, new_quantity + ' ' + localStorage.getItem(key).split(' ')[1] + ' ' + localStorage.getItem(key).split(' ')[2])
                 quantity_element.attr('value', new_quantity)
+                price_element.html(+price_element.attr('value') * new_quantity)
+
             }
+
             updateCart()          
             updateTotal()
         })
@@ -149,16 +166,22 @@
             const key = $(this).attr('value')
             let parent = $(this).parent()
             let quantity_element = parent.children(`.quantity-${key}`)
+            let price_element = $(`.price-column-${key}`)
+
             let new_quantity = +quantity_element.val() + 1;                               
             localStorage.setItem(key, new_quantity + ' ' + localStorage.getItem(key).split(' ')[1] + ' ' + localStorage.getItem(key).split(' ')[2])
             quantity_element.attr('value', new_quantity)
+            price_element.html(+price_element.attr('value') * new_quantity)
             updateCart()    
             updateTotal()
 
         })
     </script>
+    <script>
+       
+    </script>
     {{> updateCart}}
-    
+    {{> localStorageChange}}
 </body>
 
 </html>

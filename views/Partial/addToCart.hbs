@@ -12,10 +12,14 @@
         
       }
       const cart = { ...localStorage };
+      let products = ``
       let total_items = 0;
       for (item in cart) {
         total_items += +cart[item].split(' ')[0]
+        products += item + '_' + cart[item].split(' ')[0] + ' '
       }
       document.querySelector('.fa-shopping-cart').textContent = `\t` + total_items;
+      products = products.substring(0, products.length-1)
+      
     })
 </script>

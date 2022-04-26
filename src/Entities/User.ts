@@ -41,7 +41,4 @@ export class User{
         default:''
     })
     user_tel: string;
-
-    
-    @ManyToOne(type => Cart, cart => cart.users) cart: Cart;
 }

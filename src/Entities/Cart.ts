@@ -5,19 +5,14 @@ import { User } from "./User";
 
 @Entity()
 export class Cart{
-    @PrimaryGeneratedColumn({
+    @PrimaryColumn({
+        nullable: false,
         type: 'bigint',
     })
-    cart_id: number;
+    user_id: number
 
-    @Column("int", {
-        array: true,
+    @Column({
+        nullable: true,
     })
-    @OneToMany(type => User, user => user.user_id) users: User[];
-
-    @Column("int", {
-        array:  true,
-    })
-    @ManyToMany(type => Product) @JoinTable()
-    products: Product[];
+    products: string
 }
