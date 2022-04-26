@@ -1,7 +1,12 @@
-import { Controller, Get, Post, Render, Redirect, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Render, Redirect, Body, Param, UseFilters, UseGuards } from '@nestjs/common';
+import { Admin_AuthExceptionFilter } from 'src/Guards/admin-auth-exception.filter';
+import { AuthenticatedGuard } from 'src/Guards/authenticated.guard';
 import { AdminUserDetailService } from './admin-user-detail.service';
 
 @Controller('admin/manages/user-detail')
+@UseFilters(Admin_AuthExceptionFilter)
+@UseGuards(AuthenticatedGuard)
+
 export class AdminUserDetailController {
   constructor(private readonly adminUserDetailService: AdminUserDetailService) {}
 

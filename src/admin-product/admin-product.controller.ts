@@ -1,13 +1,18 @@
-import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param, Res} from '@nestjs/common';
+import { Controller, Get, Render, Request, Query, Redirect, UsePipes, ValidationPipe, Body, Post, Req, Param, Res, UseFilters, UseGuards} from '@nestjs/common';
 import { isEmpty, isNotEmpty } from 'class-validator';
 import { createProductDto } from 'src/DTO/createProduct.dto';
 import { createTypeDto } from 'src/DTO/createType.dto';
 
 import { Product } from 'src/Entities/Product';
+import { Admin_AuthExceptionFilter } from 'src/Guards/admin-auth-exception.filter';
+import { AuthenticatedGuard } from 'src/Guards/authenticated.guard';
 import { AdminProductService } from './admin-product.service';
 
 
 @Controller('admin/products')
+@UseFilters(Admin_AuthExceptionFilter)
+@UseGuards(AuthenticatedGuard)
+
 export class AdminProductController {
 
   constructor(private readonly adminProductService: AdminProductService) {}

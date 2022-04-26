@@ -21,6 +21,7 @@ import entities from './Entities/All_Entities';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
+import { AdminLoginModule } from './admin-login/admin-login.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { UserProfileModule } from './user-profile/user-profile.module';
     UserRegisterModule,
     GoogleLoginModule,
     UserProfileModule,
+    AdminLoginModule,
     
   ],
   controllers: [AppController],
