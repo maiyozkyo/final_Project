@@ -24,7 +24,7 @@ export class AdminLoginController {
   }
 
   @Post()
-  // @UseGuards(AdminLoginGuard)
+  //@UseGuards(AdminLoginGuard)
   @Render("./admin/home")
   async login(@Body() user:createAccountDto, @Req() req) {
     const foundUser = await this.adminLoginService.validUser(user.user_Name, user.password);
