@@ -38,7 +38,7 @@ async function bootstrap() {
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      cookie: { maxAge: 36000 },
+      
     }),
   )
 
