@@ -4,8 +4,8 @@ import { AuthenticatedGuard } from 'src/Guards/authenticated.guard';
 import { AdminOrderListService } from './admin-order-list.service';
 
 @Controller('admin/order')
-@UseFilters(Admin_AuthExceptionFilter)
-@UseGuards(AuthenticatedGuard)
+// @UseFilters(Admin_AuthExceptionFilter)
+// @UseGuards(AuthenticatedGuard)
 
 export class AdminOrderListController {
   constructor(private readonly adminOrderListService: AdminOrderListService) {}

@@ -4,11 +4,11 @@ import { AuthenticatedGuard } from 'src/Guards/authenticated.guard';
 import { AdminManagementService } from './admin-management.service';
 
 @Controller('admin/manages')
-@UseFilters(Admin_AuthExceptionFilter)
+// @UseFilters(Admin_AuthExceptionFilter)
 export class AdminManagementController {
   constructor(private readonly adminManagementService: AdminManagementService) {}
   @Get()
-  @UseGuards(AuthenticatedGuard)
+  // @UseGuards(AuthenticatedGuard)
   @Render('./Admin/manage-users')
   async root(){
     const page = 1;

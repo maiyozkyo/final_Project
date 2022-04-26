@@ -10,8 +10,8 @@ import { AdminProductService } from './admin-product.service';
 
 
 @Controller('admin/products')
-@UseFilters(Admin_AuthExceptionFilter)
-@UseGuards(AuthenticatedGuard)
+// @UseFilters(Admin_AuthExceptionFilter)
+// @UseGuards(AuthenticatedGuard)
 
 export class AdminProductController {
 

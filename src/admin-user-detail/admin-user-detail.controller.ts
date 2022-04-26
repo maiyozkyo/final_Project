@@ -4,8 +4,8 @@ import { AuthenticatedGuard } from 'src/Guards/authenticated.guard';
 import { AdminUserDetailService } from './admin-user-detail.service';
 
 @Controller('admin/manages/user-detail')
-@UseFilters(Admin_AuthExceptionFilter)
-@UseGuards(AuthenticatedGuard)
+// @UseFilters(Admin_AuthExceptionFilter)
+// @UseGuards(AuthenticatedGuard)
 
 export class AdminUserDetailController {
   constructor(private readonly adminUserDetailService: AdminUserDetailService) {}
