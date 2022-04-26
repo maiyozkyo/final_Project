@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from 'src/Entities/User';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+const bcrypt = require('bcryptjs');
 
 @Injectable()
 export class UserProfileService {
@@ -39,4 +40,26 @@ export class UserProfileService {
         
         return (!!exists);
     }
-}
+
+    hashPassword(password: string): string {
+        const hash = bcrypt.hashSync(password, 10);
+        return hash;
+    }
+
+    async checkPassword(userID, currPassword, newPassword): Promise<Boolean>{
+        const find_user = await this.userRepo.findOne({
+            where: {
+                      user_id: userID
+                  },
+              });
+              if(!find_user) return false;
+      
+              const res = bcrypt.compareSync(currPassword, find_user.user_password);
+              if(res == false) return false;
+              await this.userRepo.update(userID, {
+                ...(find_user.user_password && {user_password: this.hashPassword(newPassword)}),
+              });
+              return true;
+          }
+    }
+

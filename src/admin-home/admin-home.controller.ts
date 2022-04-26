@@ -13,7 +13,12 @@ export class AdminHomeController {
   @UseGuards(AuthenticatedGuard)
   @Render('./Admin/home')
   root(){
+  }
 
+  @Get('listProduct')
+  async getListProducts(){
+    const products = await this.adminHomeService.get_All_Products();
+    return products;
   }
 
   @Get('/accounts')
